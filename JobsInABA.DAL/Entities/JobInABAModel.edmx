@@ -1,0 +1,2014 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JobsInABAModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="JobsInABAModelStoreContainer">
+    <EntitySet Name="Addresses" EntityType="JobsInABAModel.Store.Addresses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Businesses" EntityType="JobsInABAModel.Store.Businesses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BusinessAddresses" EntityType="JobsInABAModel.Store.BusinessAddresses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BusinessEmails" EntityType="JobsInABAModel.Store.BusinessEmails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BusinessPhones" EntityType="JobsInABAModel.Store.BusinessPhones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BusinessUserMaps" EntityType="JobsInABAModel.Store.BusinessUserMaps" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClassTypes" EntityType="JobsInABAModel.Store.ClassTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Countries" EntityType="JobsInABAModel.Store.Countries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Emails" EntityType="JobsInABAModel.Store.Emails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JobApplications" EntityType="JobsInABAModel.Store.JobApplications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JobApplicationStates" EntityType="JobsInABAModel.Store.JobApplicationStates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Jobs" EntityType="JobsInABAModel.Store.Jobs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="JobsInABAModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="JobsInABAModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeCodes" EntityType="JobsInABAModel.Store.TypeCodes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserAccounts" EntityType="JobsInABAModel.Store.UserAccounts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserAddresses" EntityType="JobsInABAModel.Store.UserAddresses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserEmails" EntityType="JobsInABAModel.Store.UserEmails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserPhones" EntityType="JobsInABAModel.Store.UserPhones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRoles" EntityType="JobsInABAModel.Store.UserRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="JobsInABAModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Phones" EntityType="JobsInABAModel.Store.Phones" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Address_Countries" Association="JobsInABAModel.Store.FK_Address_Countries">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Address_TypeCodes" Association="JobsInABAModel.Store.FK_Address_TypeCodes">
+      <End Role="TypeCode" EntitySet="TypeCodes" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessAddresses_Address" Association="JobsInABAModel.Store.FK_BusinessAddresses_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="BusinessAddress" EntitySet="BusinessAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAddresses_Address" Association="JobsInABAModel.Store.FK_UserAddresses_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="UserAddress" EntitySet="UserAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Business_TypeCodes" Association="JobsInABAModel.Store.FK_Business_TypeCodes">
+      <End Role="TypeCode" EntitySet="TypeCodes" />
+      <End Role="Business" EntitySet="Businesses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Business_Users" Association="JobsInABAModel.Store.FK_Business_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Business" EntitySet="Businesses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Business_Users1" Association="JobsInABAModel.Store.FK_Business_Users1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Business" EntitySet="Businesses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessAddresses_Business" Association="JobsInABAModel.Store.FK_BusinessAddresses_Business">
+      <End Role="Business" EntitySet="Businesses" />
+      <End Role="BusinessAddress" EntitySet="BusinessAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessEmails_Business" Association="JobsInABAModel.Store.FK_BusinessEmails_Business">
+      <End Role="Business" EntitySet="Businesses" />
+      <End Role="BusinessEmail" EntitySet="BusinessEmails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessPhones_Business" Association="JobsInABAModel.Store.FK_BusinessPhones_Business">
+      <End Role="Business" EntitySet="Businesses" />
+      <End Role="BusinessPhone" EntitySet="BusinessPhones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessUserMaps_Business" Association="JobsInABAModel.Store.FK_BusinessUserMaps_Business">
+      <End Role="Business" EntitySet="Businesses" />
+      <End Role="BusinessUserMap" EntitySet="BusinessUserMaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_Business" Association="JobsInABAModel.Store.FK_Jobs_Business">
+      <End Role="Business" EntitySet="Businesses" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessEmails_Emails" Association="JobsInABAModel.Store.FK_BusinessEmails_Emails">
+      <End Role="Email" EntitySet="Emails" />
+      <End Role="BusinessEmail" EntitySet="BusinessEmails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessUserMaps_TypeCodes" Association="JobsInABAModel.Store.FK_BusinessUserMaps_TypeCodes">
+      <End Role="TypeCode" EntitySet="TypeCodes" />
+      <End Role="BusinessUserMap" EntitySet="BusinessUserMaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessUserMaps_Users" Association="JobsInABAModel.Store.FK_BusinessUserMaps_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="BusinessUserMap" EntitySet="BusinessUserMaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TypeCodes_ClassTypes" Association="JobsInABAModel.Store.FK_TypeCodes_ClassTypes">
+      <End Role="ClassType" EntitySet="ClassTypes" />
+      <End Role="TypeCode" EntitySet="TypeCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emails_TypeCodes" Association="JobsInABAModel.Store.FK_Emails_TypeCodes">
+      <End Role="TypeCode" EntitySet="TypeCodes" />
+      <End Role="Email" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserEmails_Emails" Association="JobsInABAModel.Store.FK_UserEmails_Emails">
+      <End Role="Email" EntitySet="Emails" />
+      <End Role="UserEmail" EntitySet="UserEmails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobApplications_Jobs" Association="JobsInABAModel.Store.FK_JobApplications_Jobs">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="JobApplication" EntitySet="JobApplications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobApplications_Users" Association="JobsInABAModel.Store.FK_JobApplications_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="JobApplication" EntitySet="JobApplications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobApplicationStates_JobApplications" Association="JobsInABAModel.Store.FK_JobApplicationStates_JobApplications">
+      <End Role="JobApplication" EntitySet="JobApplications" />
+      <End Role="JobApplicationState" EntitySet="JobApplicationStates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobApplicationStates__TypeCodes" Association="JobsInABAModel.Store.FK_JobApplicationStates__TypeCodes">
+      <End Role="TypeCode" EntitySet="TypeCodes" />
+      <End Role="JobApplicationState" EntitySet="JobApplicationStates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_TypeCodes" Association="JobsInABAModel.Store.FK_Jobs_TypeCodes">
+      <End Role="TypeCode" EntitySet="TypeCodes" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Roles" Association="JobsInABAModel.Store.FK_UserRoles_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TypeCodes_TypeCodes" Association="JobsInABAModel.Store.FK_TypeCodes_TypeCodes">
+      <End Role="TypeCode" EntitySet="TypeCodes" />
+      <End Role="TypeCode1" EntitySet="TypeCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccounts_Users" Association="JobsInABAModel.Store.FK_UserAccounts_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAddresses_Users" Association="JobsInABAModel.Store.FK_UserAddresses_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserAddress" EntitySet="UserAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserEmails_Users" Association="JobsInABAModel.Store.FK_UserEmails_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserEmail" EntitySet="UserEmails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPhones_Users" Association="JobsInABAModel.Store.FK_UserPhones_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserPhone" EntitySet="UserPhones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Users" Association="JobsInABAModel.Store.FK_UserRoles_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Users" Association="JobsInABAModel.Store.FK_Users_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="User1" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Users1" Association="JobsInABAModel.Store.FK_Users_Users1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="User1" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessPhones_Phones" Association="JobsInABAModel.Store.FK_BusinessPhones_Phones">
+      <End Role="Phone" EntitySet="Phones" />
+      <End Role="BusinessPhone" EntitySet="BusinessPhones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Phones_TypeCodes" Association="JobsInABAModel.Store.FK_Phones_TypeCodes">
+      <End Role="TypeCode" EntitySet="TypeCodes" />
+      <End Role="Phone" EntitySet="Phones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPhones_Phones" Association="JobsInABAModel.Store.FK_UserPhones_Phones">
+      <End Role="Phone" EntitySet="Phones" />
+      <End Role="UserPhone" EntitySet="UserPhones" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Addresses">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Line1" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Line2" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Line3" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="City" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="State" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ZipCode" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="CountryID" Type="int" Nullable="true" />
+    <Property Name="AddressTypeID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Businesses">
+    <Key>
+      <PropertyRef Name="BusinessID" />
+    </Key>
+    <Property Name="BusinessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Abbreviation" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="StartDate" Type="datetime" Nullable="true" />
+    <Property Name="BusinessTypeID" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="insuser" Type="int" Nullable="true" />
+    <Property Name="insdt" Type="datetime" Nullable="true" />
+    <Property Name="upduser" Type="int" Nullable="true" />
+    <Property Name="upddt" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="BusinessAddresses">
+    <Key>
+      <PropertyRef Name="BusinessAddressID" />
+    </Key>
+    <Property Name="BusinessAddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusinessID" Type="int" Nullable="false" />
+    <Property Name="AddressID" Type="int" Nullable="false" />
+    <Property Name="IsPrimary" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BusinessEmails">
+    <Key>
+      <PropertyRef Name="BusinessEmailID" />
+    </Key>
+    <Property Name="BusinessEmailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusinessID" Type="int" Nullable="false" />
+    <Property Name="EmailID" Type="int" Nullable="false" />
+    <Property Name="IsPrimary" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BusinessPhones">
+    <Key>
+      <PropertyRef Name="BusinessPhoneID" />
+    </Key>
+    <Property Name="BusinessPhoneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusinessID" Type="int" Nullable="false" />
+    <Property Name="PhoneID" Type="int" Nullable="false" />
+    <Property Name="IsPrimary" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BusinessUserMaps">
+    <Key>
+      <PropertyRef Name="BusinessUserMapID" />
+    </Key>
+    <Property Name="BusinessUserMapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusinessID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="IsOwner" Type="bit" Nullable="false" />
+    <Property Name="BusinessUserTypeID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ClassTypes">
+    <Key>
+      <PropertyRef Name="ClassTypeID" />
+    </Key>
+    <Property Name="ClassTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Abbreviation" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="Code" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="PhoneCode" Type="varchar" Nullable="true" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Emails">
+    <Key>
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="EmailID" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="EmailTypeID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="JobApplications">
+    <Key>
+      <PropertyRef Name="JobApplicationID" />
+    </Key>
+    <Property Name="JobApplicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobID" Type="int" Nullable="false" />
+    <Property Name="ApplicantUserID" Type="int" Nullable="false" />
+    <Property Name="ApplicationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JobApplicationStates">
+    <Key>
+      <PropertyRef Name="JobApplicationStateID" />
+    </Key>
+    <Property Name="JobApplicationStateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobApplicationID" Type="int" Nullable="false" />
+    <Property Name="JobApplicationStatusID" Type="int" Nullable="false" />
+    <Property Name="insdt" Type="datetime" Nullable="false" />
+    <Property Name="insuser" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Jobs">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusinessID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="JobTypeID" Type="int" Nullable="true" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="true" />
+    <Property Name="EndDate" Type="datetime" Nullable="true" />
+    <Property Name="insuser" Type="int" Nullable="true" />
+    <Property Name="insdt" Type="datetime" Nullable="true" />
+    <Property Name="upduser" Type="int" Nullable="true" />
+    <Property Name="upddt" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Precedence" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="true" />
+    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="TypeCodes">
+    <Key>
+      <PropertyRef Name="TypeCodeID" />
+    </Key>
+    <Property Name="TypeCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="ClassTypeID" Type="int" Nullable="false" />
+    <Property Name="ParentTypeCodeID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UserAccounts">
+    <Key>
+      <PropertyRef Name="UserAccountID" />
+    </Key>
+    <Property Name="UserAccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Password" Type="varbinary" Nullable="false" MaxLength="250" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="insuser" Type="int" Nullable="true" />
+    <Property Name="insdt" Type="datetime" Nullable="true" />
+    <Property Name="upduser" Type="int" Nullable="true" />
+    <Property Name="upddt" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UserAddresses">
+    <Key>
+      <PropertyRef Name="UserAddressID" />
+    </Key>
+    <Property Name="UserAddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="AddressID" Type="int" Nullable="false" />
+    <Property Name="IsPrimary" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserEmails">
+    <Key>
+      <PropertyRef Name="UserEmailID" />
+    </Key>
+    <Property Name="UserEmailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="EmailID" Type="int" Nullable="false" />
+    <Property Name="IsPrimary" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserPhones">
+    <Key>
+      <PropertyRef Name="UserPhoneID" />
+    </Key>
+    <Property Name="UserPhoneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="PhoneID" Type="int" Nullable="false" />
+    <Property Name="IsPrimary" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="UserRoleID" />
+    </Key>
+    <Property Name="UserRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="MiddleName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="DOB" Type="datetime" Nullable="true" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="insuser" Type="int" Nullable="true" />
+    <Property Name="insdt" Type="datetime" Nullable="true" />
+    <Property Name="upduser" Type="int" Nullable="true" />
+    <Property Name="upddt" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Phones">
+    <Key>
+      <PropertyRef Name="PhoneID" />
+    </Key>
+    <Property Name="PhoneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="true" />
+    <Property Name="Number" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="Ext" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="PhoneTypeID" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="FK_Address_Countries">
+    <End Role="Country" Type="JobsInABAModel.Store.Countries" Multiplicity="0..1" />
+    <End Role="Address" Type="JobsInABAModel.Store.Addresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Address_TypeCodes">
+    <End Role="TypeCode" Type="JobsInABAModel.Store.TypeCodes" Multiplicity="0..1" />
+    <End Role="Address" Type="JobsInABAModel.Store.Addresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCode">
+        <PropertyRef Name="TypeCodeID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="AddressTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessAddresses_Address">
+    <End Role="Address" Type="JobsInABAModel.Store.Addresses" Multiplicity="1" />
+    <End Role="BusinessAddress" Type="JobsInABAModel.Store.BusinessAddresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="BusinessAddress">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAddresses_Address">
+    <End Role="Address" Type="JobsInABAModel.Store.Addresses" Multiplicity="1" />
+    <End Role="UserAddress" Type="JobsInABAModel.Store.UserAddresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="UserAddress">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Business_TypeCodes">
+    <End Role="TypeCode" Type="JobsInABAModel.Store.TypeCodes" Multiplicity="1" />
+    <End Role="Business" Type="JobsInABAModel.Store.Businesses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCode">
+        <PropertyRef Name="TypeCodeID" />
+      </Principal>
+      <Dependent Role="Business">
+        <PropertyRef Name="BusinessTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Business_Users">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="0..1" />
+    <End Role="Business" Type="JobsInABAModel.Store.Businesses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Business">
+        <PropertyRef Name="insuser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Business_Users1">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="0..1" />
+    <End Role="Business" Type="JobsInABAModel.Store.Businesses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Business">
+        <PropertyRef Name="upduser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessAddresses_Business">
+    <End Role="Business" Type="JobsInABAModel.Store.Businesses" Multiplicity="1" />
+    <End Role="BusinessAddress" Type="JobsInABAModel.Store.BusinessAddresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="BusinessID" />
+      </Principal>
+      <Dependent Role="BusinessAddress">
+        <PropertyRef Name="BusinessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessEmails_Business">
+    <End Role="Business" Type="JobsInABAModel.Store.Businesses" Multiplicity="1" />
+    <End Role="BusinessEmail" Type="JobsInABAModel.Store.BusinessEmails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="BusinessID" />
+      </Principal>
+      <Dependent Role="BusinessEmail">
+        <PropertyRef Name="BusinessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessPhones_Business">
+    <End Role="Business" Type="JobsInABAModel.Store.Businesses" Multiplicity="1" />
+    <End Role="BusinessPhone" Type="JobsInABAModel.Store.BusinessPhones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="BusinessID" />
+      </Principal>
+      <Dependent Role="BusinessPhone">
+        <PropertyRef Name="BusinessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessUserMaps_Business">
+    <End Role="Business" Type="JobsInABAModel.Store.Businesses" Multiplicity="1" />
+    <End Role="BusinessUserMap" Type="JobsInABAModel.Store.BusinessUserMaps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="BusinessID" />
+      </Principal>
+      <Dependent Role="BusinessUserMap">
+        <PropertyRef Name="BusinessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_Business">
+    <End Role="Business" Type="JobsInABAModel.Store.Businesses" Multiplicity="1" />
+    <End Role="Job" Type="JobsInABAModel.Store.Jobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="BusinessID" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="BusinessID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessEmails_Emails">
+    <End Role="Email" Type="JobsInABAModel.Store.Emails" Multiplicity="1" />
+    <End Role="BusinessEmail" Type="JobsInABAModel.Store.BusinessEmails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Email">
+        <PropertyRef Name="EmailID" />
+      </Principal>
+      <Dependent Role="BusinessEmail">
+        <PropertyRef Name="EmailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessUserMaps_TypeCodes">
+    <End Role="TypeCode" Type="JobsInABAModel.Store.TypeCodes" Multiplicity="0..1" />
+    <End Role="BusinessUserMap" Type="JobsInABAModel.Store.BusinessUserMaps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCode">
+        <PropertyRef Name="TypeCodeID" />
+      </Principal>
+      <Dependent Role="BusinessUserMap">
+        <PropertyRef Name="BusinessUserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessUserMaps_Users">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="1" />
+    <End Role="BusinessUserMap" Type="JobsInABAModel.Store.BusinessUserMaps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BusinessUserMap">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TypeCodes_ClassTypes">
+    <End Role="ClassType" Type="JobsInABAModel.Store.ClassTypes" Multiplicity="1" />
+    <End Role="TypeCode" Type="JobsInABAModel.Store.TypeCodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassType">
+        <PropertyRef Name="ClassTypeID" />
+      </Principal>
+      <Dependent Role="TypeCode">
+        <PropertyRef Name="ClassTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emails_TypeCodes">
+    <End Role="TypeCode" Type="JobsInABAModel.Store.TypeCodes" Multiplicity="0..1" />
+    <End Role="Email" Type="JobsInABAModel.Store.Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCode">
+        <PropertyRef Name="TypeCodeID" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="EmailTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserEmails_Emails">
+    <End Role="Email" Type="JobsInABAModel.Store.Emails" Multiplicity="1" />
+    <End Role="UserEmail" Type="JobsInABAModel.Store.UserEmails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Email">
+        <PropertyRef Name="EmailID" />
+      </Principal>
+      <Dependent Role="UserEmail">
+        <PropertyRef Name="EmailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobApplications_Jobs">
+    <End Role="Job" Type="JobsInABAModel.Store.Jobs" Multiplicity="1" />
+    <End Role="JobApplication" Type="JobsInABAModel.Store.JobApplications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="JobApplication">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobApplications_Users">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="1" />
+    <End Role="JobApplication" Type="JobsInABAModel.Store.JobApplications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="JobApplication">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobApplicationStates_JobApplications">
+    <End Role="JobApplication" Type="JobsInABAModel.Store.JobApplications" Multiplicity="1" />
+    <End Role="JobApplicationState" Type="JobsInABAModel.Store.JobApplicationStates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobApplication">
+        <PropertyRef Name="JobApplicationID" />
+      </Principal>
+      <Dependent Role="JobApplicationState">
+        <PropertyRef Name="JobApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobApplicationStates__TypeCodes">
+    <End Role="TypeCode" Type="JobsInABAModel.Store.TypeCodes" Multiplicity="1" />
+    <End Role="JobApplicationState" Type="JobsInABAModel.Store.JobApplicationStates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCode">
+        <PropertyRef Name="TypeCodeID" />
+      </Principal>
+      <Dependent Role="JobApplicationState">
+        <PropertyRef Name="JobApplicationStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_TypeCodes">
+    <End Role="TypeCode" Type="JobsInABAModel.Store.TypeCodes" Multiplicity="0..1" />
+    <End Role="Job" Type="JobsInABAModel.Store.Jobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCode">
+        <PropertyRef Name="TypeCodeID" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="JobTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Roles">
+    <End Role="Role" Type="JobsInABAModel.Store.Roles" Multiplicity="1" />
+    <End Role="UserRole" Type="JobsInABAModel.Store.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TypeCodes_TypeCodes">
+    <End Role="TypeCode" Type="JobsInABAModel.Store.TypeCodes" Multiplicity="0..1" />
+    <End Role="TypeCode1" Type="JobsInABAModel.Store.TypeCodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCode">
+        <PropertyRef Name="TypeCodeID" />
+      </Principal>
+      <Dependent Role="TypeCode1">
+        <PropertyRef Name="ParentTypeCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccounts_Users">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="1" />
+    <End Role="UserAccount" Type="JobsInABAModel.Store.UserAccounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserAccount">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAddresses_Users">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="1" />
+    <End Role="UserAddress" Type="JobsInABAModel.Store.UserAddresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserAddress">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserEmails_Users">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="1" />
+    <End Role="UserEmail" Type="JobsInABAModel.Store.UserEmails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserEmail">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPhones_Users">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="1" />
+    <End Role="UserPhone" Type="JobsInABAModel.Store.UserPhones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserPhone">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Users">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="1" />
+    <End Role="UserRole" Type="JobsInABAModel.Store.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Users">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="0..1" />
+    <End Role="User1" Type="JobsInABAModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="insuser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Users1">
+    <End Role="User" Type="JobsInABAModel.Store.Users" Multiplicity="0..1" />
+    <End Role="User1" Type="JobsInABAModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="upduser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessPhones_Phones">
+    <End Role="Phone" Type="JobsInABAModel.Store.Phones" Multiplicity="1" />
+    <End Role="BusinessPhone" Type="JobsInABAModel.Store.BusinessPhones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phone">
+        <PropertyRef Name="PhoneID" />
+      </Principal>
+      <Dependent Role="BusinessPhone">
+        <PropertyRef Name="PhoneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Phones_TypeCodes">
+    <End Role="TypeCode" Type="JobsInABAModel.Store.TypeCodes" Multiplicity="0..1" />
+    <End Role="Phone" Type="JobsInABAModel.Store.Phones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCode">
+        <PropertyRef Name="TypeCodeID" />
+      </Principal>
+      <Dependent Role="Phone">
+        <PropertyRef Name="PhoneTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPhones_Phones">
+    <End Role="Phone" Type="JobsInABAModel.Store.Phones" Multiplicity="1" />
+    <End Role="UserPhone" Type="JobsInABAModel.Store.UserPhones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phone">
+        <PropertyRef Name="PhoneID" />
+      </Principal>
+      <Dependent Role="UserPhone">
+        <PropertyRef Name="PhoneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JobsInABAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="JobsInABAEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="Addresses" EntityType="JobsInABAModel.Address" />
+          <EntitySet Name="Businesses" EntityType="JobsInABAModel.Business" />
+          <EntitySet Name="BusinessAddresses" EntityType="JobsInABAModel.BusinessAddress" />
+          <EntitySet Name="BusinessEmails" EntityType="JobsInABAModel.BusinessEmail" />
+          <EntitySet Name="BusinessPhones" EntityType="JobsInABAModel.BusinessPhone" />
+          <EntitySet Name="BusinessUserMaps" EntityType="JobsInABAModel.BusinessUserMap" />
+          <EntitySet Name="ClassTypes" EntityType="JobsInABAModel.ClassType" />
+          <EntitySet Name="Countries" EntityType="JobsInABAModel.Country" />
+          <EntitySet Name="Emails" EntityType="JobsInABAModel.Email" />
+          <EntitySet Name="JobApplications" EntityType="JobsInABAModel.JobApplication" />
+          <EntitySet Name="JobApplicationStates" EntityType="JobsInABAModel.JobApplicationState" />
+          <EntitySet Name="Jobs" EntityType="JobsInABAModel.Job" />
+          <EntitySet Name="Roles" EntityType="JobsInABAModel.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="JobsInABAModel.sysdiagram" />
+          <EntitySet Name="TypeCodes" EntityType="JobsInABAModel.TypeCode" />
+          <EntitySet Name="UserAccounts" EntityType="JobsInABAModel.UserAccount" />
+          <EntitySet Name="UserAddresses" EntityType="JobsInABAModel.UserAddress" />
+          <EntitySet Name="UserEmails" EntityType="JobsInABAModel.UserEmail" />
+          <EntitySet Name="UserPhones" EntityType="JobsInABAModel.UserPhone" />
+          <EntitySet Name="UserRoles" EntityType="JobsInABAModel.UserRole" />
+          <EntitySet Name="Users" EntityType="JobsInABAModel.User" />
+          <AssociationSet Name="FK_Address_Countries" Association="JobsInABAModel.FK_Address_Countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_TypeCodes" Association="JobsInABAModel.FK_Address_TypeCodes">
+            <End Role="TypeCode" EntitySet="TypeCodes" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessAddresses_Address" Association="JobsInABAModel.FK_BusinessAddresses_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="BusinessAddress" EntitySet="BusinessAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAddresses_Address" Association="JobsInABAModel.FK_UserAddresses_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="UserAddress" EntitySet="UserAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Business_TypeCodes" Association="JobsInABAModel.FK_Business_TypeCodes">
+            <End Role="TypeCode" EntitySet="TypeCodes" />
+            <End Role="Business" EntitySet="Businesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Business_Users" Association="JobsInABAModel.FK_Business_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Business" EntitySet="Businesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Business_Users1" Association="JobsInABAModel.FK_Business_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Business" EntitySet="Businesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessAddresses_Business" Association="JobsInABAModel.FK_BusinessAddresses_Business">
+            <End Role="Business" EntitySet="Businesses" />
+            <End Role="BusinessAddress" EntitySet="BusinessAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessEmails_Business" Association="JobsInABAModel.FK_BusinessEmails_Business">
+            <End Role="Business" EntitySet="Businesses" />
+            <End Role="BusinessEmail" EntitySet="BusinessEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessPhones_Business" Association="JobsInABAModel.FK_BusinessPhones_Business">
+            <End Role="Business" EntitySet="Businesses" />
+            <End Role="BusinessPhone" EntitySet="BusinessPhones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessUserMaps_Business" Association="JobsInABAModel.FK_BusinessUserMaps_Business">
+            <End Role="Business" EntitySet="Businesses" />
+            <End Role="BusinessUserMap" EntitySet="BusinessUserMaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobs_Business" Association="JobsInABAModel.FK_Jobs_Business">
+            <End Role="Business" EntitySet="Businesses" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessEmails_Emails" Association="JobsInABAModel.FK_BusinessEmails_Emails">
+            <End Role="Email" EntitySet="Emails" />
+            <End Role="BusinessEmail" EntitySet="BusinessEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessUserMaps_TypeCodes" Association="JobsInABAModel.FK_BusinessUserMaps_TypeCodes">
+            <End Role="TypeCode" EntitySet="TypeCodes" />
+            <End Role="BusinessUserMap" EntitySet="BusinessUserMaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessUserMaps_Users" Association="JobsInABAModel.FK_BusinessUserMaps_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="BusinessUserMap" EntitySet="BusinessUserMaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypeCodes_ClassTypes" Association="JobsInABAModel.FK_TypeCodes_ClassTypes">
+            <End Role="ClassType" EntitySet="ClassTypes" />
+            <End Role="TypeCode" EntitySet="TypeCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Emails_TypeCodes" Association="JobsInABAModel.FK_Emails_TypeCodes">
+            <End Role="TypeCode" EntitySet="TypeCodes" />
+            <End Role="Email" EntitySet="Emails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserEmails_Emails" Association="JobsInABAModel.FK_UserEmails_Emails">
+            <End Role="Email" EntitySet="Emails" />
+            <End Role="UserEmail" EntitySet="UserEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobApplications_Jobs" Association="JobsInABAModel.FK_JobApplications_Jobs">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="JobApplication" EntitySet="JobApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobApplications_Users" Association="JobsInABAModel.FK_JobApplications_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="JobApplication" EntitySet="JobApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobApplicationStates_JobApplications" Association="JobsInABAModel.FK_JobApplicationStates_JobApplications">
+            <End Role="JobApplication" EntitySet="JobApplications" />
+            <End Role="JobApplicationState" EntitySet="JobApplicationStates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobApplicationStates__TypeCodes" Association="JobsInABAModel.FK_JobApplicationStates__TypeCodes">
+            <End Role="TypeCode" EntitySet="TypeCodes" />
+            <End Role="JobApplicationState" EntitySet="JobApplicationStates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobs_TypeCodes" Association="JobsInABAModel.FK_Jobs_TypeCodes">
+            <End Role="TypeCode" EntitySet="TypeCodes" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="JobsInABAModel.FK_UserRoles_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypeCodes_TypeCodes" Association="JobsInABAModel.FK_TypeCodes_TypeCodes">
+            <End Role="TypeCode" EntitySet="TypeCodes" />
+            <End Role="TypeCode1" EntitySet="TypeCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccounts_Users" Association="JobsInABAModel.FK_UserAccounts_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAddresses_Users" Association="JobsInABAModel.FK_UserAddresses_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserAddress" EntitySet="UserAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserEmails_Users" Association="JobsInABAModel.FK_UserEmails_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserEmail" EntitySet="UserEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPhones_Users" Association="JobsInABAModel.FK_UserPhones_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserPhone" EntitySet="UserPhones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Users" Association="JobsInABAModel.FK_UserRoles_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users" Association="JobsInABAModel.FK_Users_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="User1" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users1" Association="JobsInABAModel.FK_Users_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="User1" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Phones" EntityType="JobsInABAModel.Phone" />
+          <AssociationSet Name="FK_BusinessPhones_Phones" Association="JobsInABAModel.FK_BusinessPhones_Phones">
+            <End Role="Phone" EntitySet="Phones" />
+            <End Role="BusinessPhone" EntitySet="BusinessPhones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Phones_TypeCodes" Association="JobsInABAModel.FK_Phones_TypeCodes">
+            <End Role="TypeCode" EntitySet="TypeCodes" />
+            <End Role="Phone" EntitySet="Phones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPhones_Phones" Association="JobsInABAModel.FK_UserPhones_Phones">
+            <End Role="Phone" EntitySet="Phones" />
+            <End Role="UserPhone" EntitySet="UserPhones" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressID" />
+          </Key>
+          <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Line1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Line2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Line3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="AddressTypeID" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="JobsInABAModel.FK_Address_Countries" FromRole="Address" ToRole="Country" />
+          <NavigationProperty Name="TypeCode" Relationship="JobsInABAModel.FK_Address_TypeCodes" FromRole="Address" ToRole="TypeCode" />
+          <NavigationProperty Name="BusinessAddresses" Relationship="JobsInABAModel.FK_BusinessAddresses_Address" FromRole="Address" ToRole="BusinessAddress" />
+          <NavigationProperty Name="UserAddresses" Relationship="JobsInABAModel.FK_UserAddresses_Address" FromRole="Address" ToRole="UserAddress" />
+        </EntityType>
+        <EntityType Name="Business">
+          <Key>
+            <PropertyRef Name="BusinessID" />
+          </Key>
+          <Property Name="BusinessID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Abbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="BusinessTypeID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="insuser" Type="Int32" />
+          <Property Name="insdt" Type="DateTime" Precision="3" />
+          <Property Name="upduser" Type="Int32" />
+          <Property Name="upddt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TypeCode" Relationship="JobsInABAModel.FK_Business_TypeCodes" FromRole="Business" ToRole="TypeCode" />
+          <NavigationProperty Name="User" Relationship="JobsInABAModel.FK_Business_Users" FromRole="Business" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="JobsInABAModel.FK_Business_Users1" FromRole="Business" ToRole="User" />
+          <NavigationProperty Name="BusinessAddresses" Relationship="JobsInABAModel.FK_BusinessAddresses_Business" FromRole="Business" ToRole="BusinessAddress" />
+          <NavigationProperty Name="BusinessEmails" Relationship="JobsInABAModel.FK_BusinessEmails_Business" FromRole="Business" ToRole="BusinessEmail" />
+          <NavigationProperty Name="BusinessPhones" Relationship="JobsInABAModel.FK_BusinessPhones_Business" FromRole="Business" ToRole="BusinessPhone" />
+          <NavigationProperty Name="BusinessUserMaps" Relationship="JobsInABAModel.FK_BusinessUserMaps_Business" FromRole="Business" ToRole="BusinessUserMap" />
+          <NavigationProperty Name="Jobs" Relationship="JobsInABAModel.FK_Jobs_Business" FromRole="Business" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="BusinessAddress">
+          <Key>
+            <PropertyRef Name="BusinessAddressID" />
+          </Key>
+          <Property Name="BusinessAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessID" Type="Int32" Nullable="false" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" />
+          <Property Name="IsPrimary" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="JobsInABAModel.FK_BusinessAddresses_Address" FromRole="BusinessAddress" ToRole="Address" />
+          <NavigationProperty Name="Business" Relationship="JobsInABAModel.FK_BusinessAddresses_Business" FromRole="BusinessAddress" ToRole="Business" />
+        </EntityType>
+        <EntityType Name="BusinessEmail">
+          <Key>
+            <PropertyRef Name="BusinessEmailID" />
+          </Key>
+          <Property Name="BusinessEmailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessID" Type="Int32" Nullable="false" />
+          <Property Name="EmailID" Type="Int32" Nullable="false" />
+          <Property Name="IsPrimary" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Business" Relationship="JobsInABAModel.FK_BusinessEmails_Business" FromRole="BusinessEmail" ToRole="Business" />
+          <NavigationProperty Name="Email" Relationship="JobsInABAModel.FK_BusinessEmails_Emails" FromRole="BusinessEmail" ToRole="Email" />
+        </EntityType>
+        <EntityType Name="BusinessPhone">
+          <Key>
+            <PropertyRef Name="BusinessPhoneID" />
+          </Key>
+          <Property Name="BusinessPhoneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessID" Type="Int32" Nullable="false" />
+          <Property Name="PhoneID" Type="Int32" Nullable="false" />
+          <Property Name="IsPrimary" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Business" Relationship="JobsInABAModel.FK_BusinessPhones_Business" FromRole="BusinessPhone" ToRole="Business" />
+          <NavigationProperty Name="Phone" Relationship="JobsInABAModel.FK_BusinessPhones_Phones" FromRole="BusinessPhone" ToRole="Phone" />
+        </EntityType>
+        <EntityType Name="BusinessUserMap">
+          <Key>
+            <PropertyRef Name="BusinessUserMapID" />
+          </Key>
+          <Property Name="BusinessUserMapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="IsOwner" Type="Boolean" Nullable="false" />
+          <Property Name="BusinessUserTypeID" Type="Int32" />
+          <NavigationProperty Name="Business" Relationship="JobsInABAModel.FK_BusinessUserMaps_Business" FromRole="BusinessUserMap" ToRole="Business" />
+          <NavigationProperty Name="TypeCode" Relationship="JobsInABAModel.FK_BusinessUserMaps_TypeCodes" FromRole="BusinessUserMap" ToRole="TypeCode" />
+          <NavigationProperty Name="User" Relationship="JobsInABAModel.FK_BusinessUserMaps_Users" FromRole="BusinessUserMap" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ClassType">
+          <Key>
+            <PropertyRef Name="ClassTypeID" />
+          </Key>
+          <Property Name="ClassTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TypeCodes" Relationship="JobsInABAModel.FK_TypeCodes_ClassTypes" FromRole="ClassType" ToRole="TypeCode" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Abbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Addresses" Relationship="JobsInABAModel.FK_Address_Countries" FromRole="Country" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EmailID" />
+          </Key>
+          <Property Name="EmailID" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailTypeID" Type="Int32" />
+          <NavigationProperty Name="BusinessEmails" Relationship="JobsInABAModel.FK_BusinessEmails_Emails" FromRole="Email" ToRole="BusinessEmail" />
+          <NavigationProperty Name="TypeCode" Relationship="JobsInABAModel.FK_Emails_TypeCodes" FromRole="Email" ToRole="TypeCode" />
+          <NavigationProperty Name="UserEmails" Relationship="JobsInABAModel.FK_UserEmails_Emails" FromRole="Email" ToRole="UserEmail" />
+        </EntityType>
+        <EntityType Name="JobApplication">
+          <Key>
+            <PropertyRef Name="JobApplicationID" />
+          </Key>
+          <Property Name="JobApplicationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobID" Type="Int32" Nullable="false" />
+          <Property Name="ApplicantUserID" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Job" Relationship="JobsInABAModel.FK_JobApplications_Jobs" FromRole="JobApplication" ToRole="Job" />
+          <NavigationProperty Name="User" Relationship="JobsInABAModel.FK_JobApplications_Users" FromRole="JobApplication" ToRole="User" />
+          <NavigationProperty Name="JobApplicationStates" Relationship="JobsInABAModel.FK_JobApplicationStates_JobApplications" FromRole="JobApplication" ToRole="JobApplicationState" />
+        </EntityType>
+        <EntityType Name="JobApplicationState">
+          <Key>
+            <PropertyRef Name="JobApplicationStateID" />
+          </Key>
+          <Property Name="JobApplicationStateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobApplicationID" Type="Int32" Nullable="false" />
+          <Property Name="JobApplicationStatusID" Type="Int32" Nullable="false" />
+          <Property Name="insdt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="insuser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="JobApplication" Relationship="JobsInABAModel.FK_JobApplicationStates_JobApplications" FromRole="JobApplicationState" ToRole="JobApplication" />
+          <NavigationProperty Name="TypeCode" Relationship="JobsInABAModel.FK_JobApplicationStates__TypeCodes" FromRole="JobApplicationState" ToRole="TypeCode" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="JobTypeID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="insuser" Type="Int32" />
+          <Property Name="insdt" Type="DateTime" Precision="3" />
+          <Property Name="upduser" Type="Int32" />
+          <Property Name="upddt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Business" Relationship="JobsInABAModel.FK_Jobs_Business" FromRole="Job" ToRole="Business" />
+          <NavigationProperty Name="JobApplications" Relationship="JobsInABAModel.FK_JobApplications_Jobs" FromRole="Job" ToRole="JobApplication" />
+          <NavigationProperty Name="TypeCode" Relationship="JobsInABAModel.FK_Jobs_TypeCodes" FromRole="Job" ToRole="TypeCode" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Precedence" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserRoles" Relationship="JobsInABAModel.FK_UserRoles_Roles" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeCode">
+          <Key>
+            <PropertyRef Name="TypeCodeID" />
+          </Key>
+          <Property Name="TypeCodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ClassTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ParentTypeCodeID" Type="Int32" />
+          <NavigationProperty Name="Addresses" Relationship="JobsInABAModel.FK_Address_TypeCodes" FromRole="TypeCode" ToRole="Address" />
+          <NavigationProperty Name="Businesses" Relationship="JobsInABAModel.FK_Business_TypeCodes" FromRole="TypeCode" ToRole="Business" />
+          <NavigationProperty Name="BusinessUserMaps" Relationship="JobsInABAModel.FK_BusinessUserMaps_TypeCodes" FromRole="TypeCode" ToRole="BusinessUserMap" />
+          <NavigationProperty Name="ClassType" Relationship="JobsInABAModel.FK_TypeCodes_ClassTypes" FromRole="TypeCode" ToRole="ClassType" />
+          <NavigationProperty Name="Emails" Relationship="JobsInABAModel.FK_Emails_TypeCodes" FromRole="TypeCode" ToRole="Email" />
+          <NavigationProperty Name="JobApplicationStates" Relationship="JobsInABAModel.FK_JobApplicationStates__TypeCodes" FromRole="TypeCode" ToRole="JobApplicationState" />
+          <NavigationProperty Name="Jobs" Relationship="JobsInABAModel.FK_Jobs_TypeCodes" FromRole="TypeCode" ToRole="Job" />
+          <NavigationProperty Name="TypeCodes1" Relationship="JobsInABAModel.FK_TypeCodes_TypeCodes" FromRole="TypeCode" ToRole="TypeCode1" />
+          <NavigationProperty Name="TypeCode1" Relationship="JobsInABAModel.FK_TypeCodes_TypeCodes" FromRole="TypeCode1" ToRole="TypeCode" />
+          <NavigationProperty Name="Phones" Relationship="JobsInABAModel.FK_Phones_TypeCodes" FromRole="TypeCode" ToRole="Phone" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserAccountID" />
+          </Key>
+          <Property Name="UserAccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="Binary" Nullable="false" MaxLength="250" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="insuser" Type="Int32" />
+          <Property Name="insdt" Type="DateTime" Precision="3" />
+          <Property Name="upduser" Type="Int32" />
+          <Property Name="upddt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="JobsInABAModel.FK_UserAccounts_Users" FromRole="UserAccount" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserAddress">
+          <Key>
+            <PropertyRef Name="UserAddressID" />
+          </Key>
+          <Property Name="UserAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" />
+          <Property Name="IsPrimary" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="JobsInABAModel.FK_UserAddresses_Address" FromRole="UserAddress" ToRole="Address" />
+          <NavigationProperty Name="User" Relationship="JobsInABAModel.FK_UserAddresses_Users" FromRole="UserAddress" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserEmail">
+          <Key>
+            <PropertyRef Name="UserEmailID" />
+          </Key>
+          <Property Name="UserEmailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="EmailID" Type="Int32" Nullable="false" />
+          <Property Name="IsPrimary" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Email" Relationship="JobsInABAModel.FK_UserEmails_Emails" FromRole="UserEmail" ToRole="Email" />
+          <NavigationProperty Name="User" Relationship="JobsInABAModel.FK_UserEmails_Users" FromRole="UserEmail" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserPhone">
+          <Key>
+            <PropertyRef Name="UserPhoneID" />
+          </Key>
+          <Property Name="UserPhoneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="PhoneID" Type="Int32" Nullable="false" />
+          <Property Name="IsPrimary" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="JobsInABAModel.FK_UserPhones_Users" FromRole="UserPhone" ToRole="User" />
+          <NavigationProperty Name="Phone" Relationship="JobsInABAModel.FK_UserPhones_Phones" FromRole="UserPhone" ToRole="Phone" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="JobsInABAModel.FK_UserRoles_Roles" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="JobsInABAModel.FK_UserRoles_Users" FromRole="UserRole" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="insuser" Type="Int32" />
+          <Property Name="insdt" Type="DateTime" Precision="3" />
+          <Property Name="upduser" Type="Int32" />
+          <Property Name="upddt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Businesses" Relationship="JobsInABAModel.FK_Business_Users" FromRole="User" ToRole="Business" />
+          <NavigationProperty Name="Businesses1" Relationship="JobsInABAModel.FK_Business_Users1" FromRole="User" ToRole="Business" />
+          <NavigationProperty Name="BusinessUserMaps" Relationship="JobsInABAModel.FK_BusinessUserMaps_Users" FromRole="User" ToRole="BusinessUserMap" />
+          <NavigationProperty Name="JobApplications" Relationship="JobsInABAModel.FK_JobApplications_Users" FromRole="User" ToRole="JobApplication" />
+          <NavigationProperty Name="UserAccounts" Relationship="JobsInABAModel.FK_UserAccounts_Users" FromRole="User" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAddresses" Relationship="JobsInABAModel.FK_UserAddresses_Users" FromRole="User" ToRole="UserAddress" />
+          <NavigationProperty Name="UserEmails" Relationship="JobsInABAModel.FK_UserEmails_Users" FromRole="User" ToRole="UserEmail" />
+          <NavigationProperty Name="UserPhones" Relationship="JobsInABAModel.FK_UserPhones_Users" FromRole="User" ToRole="UserPhone" />
+          <NavigationProperty Name="UserRoles" Relationship="JobsInABAModel.FK_UserRoles_Users" FromRole="User" ToRole="UserRole" />
+          <NavigationProperty Name="Users1" Relationship="JobsInABAModel.FK_Users_Users" FromRole="User" ToRole="User1" />
+          <NavigationProperty Name="User1" Relationship="JobsInABAModel.FK_Users_Users" FromRole="User1" ToRole="User" />
+          <NavigationProperty Name="Users11" Relationship="JobsInABAModel.FK_Users_Users1" FromRole="User" ToRole="User1" />
+          <NavigationProperty Name="User2" Relationship="JobsInABAModel.FK_Users_Users1" FromRole="User1" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Address_Countries">
+          <End Type="JobsInABAModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_TypeCodes">
+          <End Type="JobsInABAModel.TypeCode" Role="TypeCode" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCode">
+              <PropertyRef Name="TypeCodeID" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessAddresses_Address">
+          <End Type="JobsInABAModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="JobsInABAModel.BusinessAddress" Role="BusinessAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="BusinessAddress">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAddresses_Address">
+          <End Type="JobsInABAModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="JobsInABAModel.UserAddress" Role="UserAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressID" />
+            </Principal>
+            <Dependent Role="UserAddress">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Business_TypeCodes">
+          <End Type="JobsInABAModel.TypeCode" Role="TypeCode" Multiplicity="1" />
+          <End Type="JobsInABAModel.Business" Role="Business" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCode">
+              <PropertyRef Name="TypeCodeID" />
+            </Principal>
+            <Dependent Role="Business">
+              <PropertyRef Name="BusinessTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Business_Users">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.Business" Role="Business" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Business">
+              <PropertyRef Name="insuser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Business_Users1">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.Business" Role="Business" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Business">
+              <PropertyRef Name="upduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessAddresses_Business">
+          <End Type="JobsInABAModel.Business" Role="Business" Multiplicity="1" />
+          <End Type="JobsInABAModel.BusinessAddress" Role="BusinessAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Business">
+              <PropertyRef Name="BusinessID" />
+            </Principal>
+            <Dependent Role="BusinessAddress">
+              <PropertyRef Name="BusinessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessEmails_Business">
+          <End Type="JobsInABAModel.Business" Role="Business" Multiplicity="1" />
+          <End Type="JobsInABAModel.BusinessEmail" Role="BusinessEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Business">
+              <PropertyRef Name="BusinessID" />
+            </Principal>
+            <Dependent Role="BusinessEmail">
+              <PropertyRef Name="BusinessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessPhones_Business">
+          <End Type="JobsInABAModel.Business" Role="Business" Multiplicity="1" />
+          <End Type="JobsInABAModel.BusinessPhone" Role="BusinessPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Business">
+              <PropertyRef Name="BusinessID" />
+            </Principal>
+            <Dependent Role="BusinessPhone">
+              <PropertyRef Name="BusinessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessUserMaps_Business">
+          <End Type="JobsInABAModel.Business" Role="Business" Multiplicity="1" />
+          <End Type="JobsInABAModel.BusinessUserMap" Role="BusinessUserMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Business">
+              <PropertyRef Name="BusinessID" />
+            </Principal>
+            <Dependent Role="BusinessUserMap">
+              <PropertyRef Name="BusinessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobs_Business">
+          <End Type="JobsInABAModel.Business" Role="Business" Multiplicity="1" />
+          <End Type="JobsInABAModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Business">
+              <PropertyRef Name="BusinessID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="BusinessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessEmails_Emails">
+          <End Type="JobsInABAModel.Email" Role="Email" Multiplicity="1" />
+          <End Type="JobsInABAModel.BusinessEmail" Role="BusinessEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EmailID" />
+            </Principal>
+            <Dependent Role="BusinessEmail">
+              <PropertyRef Name="EmailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessUserMaps_TypeCodes">
+          <End Type="JobsInABAModel.TypeCode" Role="TypeCode" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.BusinessUserMap" Role="BusinessUserMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCode">
+              <PropertyRef Name="TypeCodeID" />
+            </Principal>
+            <Dependent Role="BusinessUserMap">
+              <PropertyRef Name="BusinessUserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessUserMaps_Users">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="1" />
+          <End Type="JobsInABAModel.BusinessUserMap" Role="BusinessUserMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BusinessUserMap">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypeCodes_ClassTypes">
+          <End Type="JobsInABAModel.ClassType" Role="ClassType" Multiplicity="1" />
+          <End Type="JobsInABAModel.TypeCode" Role="TypeCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassType">
+              <PropertyRef Name="ClassTypeID" />
+            </Principal>
+            <Dependent Role="TypeCode">
+              <PropertyRef Name="ClassTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Emails_TypeCodes">
+          <End Type="JobsInABAModel.TypeCode" Role="TypeCode" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.Email" Role="Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCode">
+              <PropertyRef Name="TypeCodeID" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="EmailTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserEmails_Emails">
+          <End Type="JobsInABAModel.Email" Role="Email" Multiplicity="1" />
+          <End Type="JobsInABAModel.UserEmail" Role="UserEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EmailID" />
+            </Principal>
+            <Dependent Role="UserEmail">
+              <PropertyRef Name="EmailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobApplications_Jobs">
+          <End Type="JobsInABAModel.Job" Role="Job" Multiplicity="1" />
+          <End Type="JobsInABAModel.JobApplication" Role="JobApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="JobApplication">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobApplications_Users">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="1" />
+          <End Type="JobsInABAModel.JobApplication" Role="JobApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="JobApplication">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobApplicationStates_JobApplications">
+          <End Type="JobsInABAModel.JobApplication" Role="JobApplication" Multiplicity="1" />
+          <End Type="JobsInABAModel.JobApplicationState" Role="JobApplicationState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobApplication">
+              <PropertyRef Name="JobApplicationID" />
+            </Principal>
+            <Dependent Role="JobApplicationState">
+              <PropertyRef Name="JobApplicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobApplicationStates__TypeCodes">
+          <End Type="JobsInABAModel.TypeCode" Role="TypeCode" Multiplicity="1" />
+          <End Type="JobsInABAModel.JobApplicationState" Role="JobApplicationState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCode">
+              <PropertyRef Name="TypeCodeID" />
+            </Principal>
+            <Dependent Role="JobApplicationState">
+              <PropertyRef Name="JobApplicationStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobs_TypeCodes">
+          <End Type="JobsInABAModel.TypeCode" Role="TypeCode" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCode">
+              <PropertyRef Name="TypeCodeID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="JobTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Type="JobsInABAModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="JobsInABAModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypeCodes_TypeCodes">
+          <End Type="JobsInABAModel.TypeCode" Role="TypeCode" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.TypeCode" Role="TypeCode1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCode">
+              <PropertyRef Name="TypeCodeID" />
+            </Principal>
+            <Dependent Role="TypeCode1">
+              <PropertyRef Name="ParentTypeCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccounts_Users">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="1" />
+          <End Type="JobsInABAModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAddresses_Users">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="1" />
+          <End Type="JobsInABAModel.UserAddress" Role="UserAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserAddress">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserEmails_Users">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="1" />
+          <End Type="JobsInABAModel.UserEmail" Role="UserEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserEmail">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPhones_Users">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="1" />
+          <End Type="JobsInABAModel.UserPhone" Role="UserPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserPhone">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Users">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="1" />
+          <End Type="JobsInABAModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.User" Role="User1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="insuser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users1">
+          <End Type="JobsInABAModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.User" Role="User1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="User1">
+              <PropertyRef Name="upduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="PhoneID" />
+          </Key>
+          <Property Name="PhoneID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Ext" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneTypeID" Type="Int32" />
+          <NavigationProperty Name="BusinessPhones" Relationship="JobsInABAModel.FK_BusinessPhones_Phones" FromRole="Phone" ToRole="BusinessPhone" />
+          <NavigationProperty Name="TypeCode" Relationship="JobsInABAModel.FK_Phones_TypeCodes" FromRole="Phone" ToRole="TypeCode" />
+          <NavigationProperty Name="UserPhones" Relationship="JobsInABAModel.FK_UserPhones_Phones" FromRole="Phone" ToRole="UserPhone" />
+        </EntityType>
+        <Association Name="FK_BusinessPhones_Phones">
+          <End Type="JobsInABAModel.Phone" Role="Phone" Multiplicity="1" />
+          <End Type="JobsInABAModel.BusinessPhone" Role="BusinessPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="PhoneID" />
+            </Principal>
+            <Dependent Role="BusinessPhone">
+              <PropertyRef Name="PhoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Phones_TypeCodes">
+          <End Type="JobsInABAModel.TypeCode" Role="TypeCode" Multiplicity="0..1" />
+          <End Type="JobsInABAModel.Phone" Role="Phone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCode">
+              <PropertyRef Name="TypeCodeID" />
+            </Principal>
+            <Dependent Role="Phone">
+              <PropertyRef Name="PhoneTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPhones_Phones">
+          <End Type="JobsInABAModel.Phone" Role="Phone" Multiplicity="1" />
+          <End Type="JobsInABAModel.UserPhone" Role="UserPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phone">
+              <PropertyRef Name="PhoneID" />
+            </Principal>
+            <Dependent Role="UserPhone">
+              <PropertyRef Name="PhoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JobsInABAModelStoreContainer" CdmEntityContainer="JobsInABAEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.Address)">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Line1" ColumnName="Line1" />
+          <ScalarProperty Name="Line2" ColumnName="Line2" />
+          <ScalarProperty Name="Line3" ColumnName="Line3" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Businesses">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.Business)">
+        <MappingFragment StoreEntitySet="Businesses">
+          <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="BusinessTypeID" ColumnName="BusinessTypeID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="insuser" ColumnName="insuser" />
+          <ScalarProperty Name="insdt" ColumnName="insdt" />
+          <ScalarProperty Name="upduser" ColumnName="upduser" />
+          <ScalarProperty Name="upddt" ColumnName="upddt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessAddresses">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.BusinessAddress)">
+        <MappingFragment StoreEntitySet="BusinessAddresses">
+          <ScalarProperty Name="BusinessAddressID" ColumnName="BusinessAddressID" />
+          <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessEmails">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.BusinessEmail)">
+        <MappingFragment StoreEntitySet="BusinessEmails">
+          <ScalarProperty Name="BusinessEmailID" ColumnName="BusinessEmailID" />
+          <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessPhones">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.BusinessPhone)">
+        <MappingFragment StoreEntitySet="BusinessPhones">
+          <ScalarProperty Name="BusinessPhoneID" ColumnName="BusinessPhoneID" />
+          <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+          <ScalarProperty Name="PhoneID" ColumnName="PhoneID" />
+          <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessUserMaps">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.BusinessUserMap)">
+        <MappingFragment StoreEntitySet="BusinessUserMaps">
+          <ScalarProperty Name="BusinessUserMapID" ColumnName="BusinessUserMapID" />
+          <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IsOwner" ColumnName="IsOwner" />
+          <ScalarProperty Name="BusinessUserTypeID" ColumnName="BusinessUserTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.ClassType)">
+        <MappingFragment StoreEntitySet="ClassTypes">
+          <ScalarProperty Name="ClassTypeID" ColumnName="ClassTypeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.Country)">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PhoneCode" ColumnName="PhoneCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emails">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.Email)">
+        <MappingFragment StoreEntitySet="Emails">
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="EmailTypeID" ColumnName="EmailTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobApplications">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.JobApplication)">
+        <MappingFragment StoreEntitySet="JobApplications">
+          <ScalarProperty Name="JobApplicationID" ColumnName="JobApplicationID" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="ApplicantUserID" ColumnName="ApplicantUserID" />
+          <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobApplicationStates">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.JobApplicationState)">
+        <MappingFragment StoreEntitySet="JobApplicationStates">
+          <ScalarProperty Name="JobApplicationStateID" ColumnName="JobApplicationStateID" />
+          <ScalarProperty Name="JobApplicationID" ColumnName="JobApplicationID" />
+          <ScalarProperty Name="JobApplicationStatusID" ColumnName="JobApplicationStatusID" />
+          <ScalarProperty Name="insdt" ColumnName="insdt" />
+          <ScalarProperty Name="insuser" ColumnName="insuser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.Job)">
+        <MappingFragment StoreEntitySet="Jobs">
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="BusinessID" ColumnName="BusinessID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="JobTypeID" ColumnName="JobTypeID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="insuser" ColumnName="insuser" />
+          <ScalarProperty Name="insdt" ColumnName="insdt" />
+          <ScalarProperty Name="upduser" ColumnName="upduser" />
+          <ScalarProperty Name="upddt" ColumnName="upddt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.Role)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Precedence" ColumnName="Precedence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.sysdiagram)">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeCodes">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.TypeCode)">
+        <MappingFragment StoreEntitySet="TypeCodes">
+          <ScalarProperty Name="TypeCodeID" ColumnName="TypeCodeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ClassTypeID" ColumnName="ClassTypeID" />
+          <ScalarProperty Name="ParentTypeCodeID" ColumnName="ParentTypeCodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccounts">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.UserAccount)">
+        <MappingFragment StoreEntitySet="UserAccounts">
+          <ScalarProperty Name="UserAccountID" ColumnName="UserAccountID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="insuser" ColumnName="insuser" />
+          <ScalarProperty Name="insdt" ColumnName="insdt" />
+          <ScalarProperty Name="upduser" ColumnName="upduser" />
+          <ScalarProperty Name="upddt" ColumnName="upddt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAddresses">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.UserAddress)">
+        <MappingFragment StoreEntitySet="UserAddresses">
+          <ScalarProperty Name="UserAddressID" ColumnName="UserAddressID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserEmails">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.UserEmail)">
+        <MappingFragment StoreEntitySet="UserEmails">
+          <ScalarProperty Name="UserEmailID" ColumnName="UserEmailID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPhones">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.UserPhone)">
+        <MappingFragment StoreEntitySet="UserPhones">
+          <ScalarProperty Name="UserPhoneID" ColumnName="UserPhoneID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PhoneID" ColumnName="PhoneID" />
+          <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.UserRole)">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="insuser" ColumnName="insuser" />
+          <ScalarProperty Name="insdt" ColumnName="insdt" />
+          <ScalarProperty Name="upduser" ColumnName="upduser" />
+          <ScalarProperty Name="upddt" ColumnName="upddt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phones">
+      <EntityTypeMapping TypeName="IsTypeOf(JobsInABAModel.Phone)">
+        <MappingFragment StoreEntitySet="Phones">
+          <ScalarProperty Name="PhoneID" ColumnName="PhoneID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Ext" ColumnName="Ext" />
+          <ScalarProperty Name="PhoneTypeID" ColumnName="PhoneTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1DAAF6C5-9B7F-4F5C-AAEF-AA6A4C87A282}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JobsInABA.BL</RootNamespace>
+    <AssemblyName>JobsInABA.BL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BL\AddressBL.cs" />
+    <Compile Include="BL\BusinessBL.cs" />
+    <Compile Include="BL\EmailsBL.cs" />
+    <Compile Include="BL\PhonesBL.cs" />
+    <Compile Include="DTOs\AssemblerExtentions\AddressAssemblerExt.cs" />
+    <Compile Include="DTOs\AssemblerExtentions\EmailAssemblerExt.cs" />
+    <Compile Include="DTOs\AssemblerExtentions\PhoneAssemblerExt.cs" />
+    <Compile Include="DTOs\AssemblerExtentions\TypeCodeAssemblerExt.cs" />
+    <Compile Include="DTOs\AssemblerExtentions\UserAddressAssemblerExt.cs" />
+    <Compile Include="DTOs\AssemblerExtentions\UserAssemblerExt.cs" />
+    <Compile Include="DTOs\AssemblerExtentions\UserEmailAssemblerExt.cs" />
+    <Compile Include="DTOs\AssemblerExtentions\UserPhoneAssemblerExt.cs" />
+    <Compile Include="DTOs\Assemblers\AddressAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\BusinessAddressAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\BusinessAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\BusinessEmailAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\BusinessPhoneAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\BusinessUserMapAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\ClassTypeAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\CountryAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\EmailAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\JobApplicationAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\JobApplicationStateAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\JobAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\PhoneAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\RoleAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\sysdiagramAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\TypeCodeAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\UserAccountAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\UserAddressAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\UserAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\UserEmailAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\UserPhoneAssembler.cs" />
+    <Compile Include="DTOs\Assemblers\UserRoleAssembler.cs" />
+    <Compile Include="BL\UsersBL.cs" />
+    <Compile Include="DTOs\AddressDTO.cs" />
+    <Compile Include="DTOs\BusinessAddressDTO.cs" />
+    <Compile Include="DTOs\BusinessDTO.cs" />
+    <Compile Include="DTOs\BusinessEmailDTO.cs" />
+    <Compile Include="DTOs\BusinessPhoneDTO.cs" />
+    <Compile Include="DTOs\BusinessUserMapDTO.cs" />
+    <Compile Include="DTOs\ClassTypeDTO.cs" />
+    <Compile Include="DTOs\CountryDTO.cs" />
+    <Compile Include="DTOs\EmailDTO.cs" />
+    <Compile Include="DTOs\JobApplicationDTO.cs" />
+    <Compile Include="DTOs\JobApplicationStateDTO.cs" />
+    <Compile Include="DTOs\JobDTO.cs" />
+    <Compile Include="DTOs\PhoneDTO.cs" />
+    <Compile Include="DTOs\RoleDTO.cs" />
+    <Compile Include="DTOs\sysdiagramDTO.cs" />
+    <Compile Include="DTOs\TypeCodeDTO.cs" />
+    <Compile Include="DTOs\UserAccountDTO.cs" />
+    <Compile Include="DTOs\UserAddressDTO.cs" />
+    <Compile Include="DTOs\UserDTO.cs" />
+    <Compile Include="DTOs\UserEmailDTO.cs" />
+    <Compile Include="DTOs\UserPhoneDTO.cs" />
+    <Compile Include="DTOs\UserRoleDTO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JobsInABA.DAL\JobsInABA.DAL.csproj">
+      <Project>{55fa9bec-5926-4cf3-9c8e-c98c8215eb76}</Project>
+      <Name>JobsInABA.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
