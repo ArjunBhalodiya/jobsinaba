@@ -1,0 +1,91 @@
+﻿<div id="post-job-wrapper" class="wrapper" style="max-width:1180px; margin:0 auto; padding-top: 0px;">
+    <div style="margin-top: 40px;">&nbsp;</div>
+    <div class="pagewidth" style=" max-width:1180px; padding:10px;">
+        <div style="float:right;">
+            <dropdown>
+                <input id="toggle2" type="checkbox">
+                <label for="toggle2" class="animate">Edit</label>
+                <ul class="animate" style="top: 54px !important;">
+                    <li class="animate"><a href="viewcompanyprofile">View Company</a></li>
+                    <li class="animate"><a href="companyprofile">Edit Company Profile</a></li>
+                    <li class="animate"><a href="publishjob.html">Job Application</a></li>
+                    <li class="animate"><a href="payment.html">Payment Detail</a></li>
+                </ul>
+            </dropdown>
+        </div>
+    </div>
+    <div class="pagewidth" style="max-width:1180px; margin:0 auto">
+        <div class="box tabdiv" style="margin-bottom:20px;">
+            <h1>ADD JOB APPLICATION</h1>
+            <div>
+                <form id="postjobform">
+                    <input style="float:left;" type="text" placeholder="School/College Name " class="formfull">
+                    <input placeholder="COMPANY NAME" type="text" class="formfull">
+                    <input placeholder="JOB TITLE" type="text" class="formhalf formfull">
+                    <input placeholder="NO. OF VACANCY" type="text" class="formhalf formfull">
+                    <textarea placeholder="JOB DESCRIPTION" type="text" style="resize: none; height: 120px;" class="formfull"></textarea>
+                    <div class="formhalf formfull" style="float:left;">
+                        ADD INDUSTRIES
+                        <br>
+                        <select class="formfull" multiple="">
+                            <option value="INDUSTRIES1">INDUSTRIES1</option>
+                            <option value="INDUSTRIES2">INDUSTRIES2</option>
+                            <option value="INDUSTRIES3">INDUSTRIES3</option>
+                        </select>
+                    </div>
+                    <div class="formhalf formfull" style="float:left;">
+                        ADD SKILL SET
+                        <br>
+                        <select class="formfull" multiple="">
+                            <option value="INDUSTRIES1">INDUSTRIES1</option>
+                            <option value="INDUSTRIES2">INDUSTRIES2</option>
+                            <option value="INDUSTRIES3">INDUSTRIES3</option>
+                        </select>
+                    </div>
+                    <div class="formhalf formfull" style="float:left;">
+                        ADD RESPONSIBILITIES
+                        <br>
+                        <select class="formfull" multiple="">
+                            <option value="INDUSTRIES1">INDUSTRIES1</option>
+                            <option value="INDUSTRIES2">INDUSTRIES2</option>
+                            <option value="INDUSTRIES3">INDUSTRIES3</option>
+                        </select>
+                    </div>
+                    <div class="formhalf formfull" style="float:left;">
+                        QUALIFICATION
+                        <br>
+                        <select class="formfull" multiple="">
+                            <option value="INDUSTRIES1">INDUSTRIES1</option>
+                            <option value="INDUSTRIES2">INDUSTRIES2</option>
+                            <option value="INDUSTRIES3">INDUSTRIES3</option>
+                        </select>
+                    </div>
+                    <input placeholder="JOB LEVEL" type="text" class="formhalf formfull">
+                    <input placeholder="LAST DATE TO APPLY" type="text" id="lastdatetoappy" class="formhalf formfull">
+                    <input placeholder="INTERVIEW BETWEEN" type="text" class="formhalf formfull">
+                    <input placeholder="LOCATION" type="text" class="formhalf formfull">
+                    <input placeholder="WEBSITE URL" type="text" class="formhalf formfull">
+                    <input placeholder="SALARY PACKAGES" type="text" class="formhalf formfull">
+                    <textarea placeholder="EXPERIENCE" class="formfull" style="resize: none; height: 120px;"></textarea>
+                    <p></p>
+                    <input type="submit" value="ADD" class="add1button">
+                    <input type="submit" value="UPADATE" class="add1button" style="background:#1B265A;border:12px solid  #1B265A">
+                    <div class="clear"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function viewcandidate(elem) {
+        var id = elem.id;
+        $("#" + id).attr("onclick", "closeallcandidate(this)");
+        $(".candidatelist").slideUp();
+        $("#candidate" + id).slideDown();
+    }
+    function closeallcandidate(elem) {
+        var id = elem.id;
+        $("#" + id).attr("onclick", "viewcandidate(this)");
+        $(".candidatelist").slideUp();
+    }
+</script>

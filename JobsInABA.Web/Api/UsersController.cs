@@ -11,6 +11,8 @@ using System.Web.Http.Description;
 using JobsInABA.DAL.Entities;
 using JobsInABA.Web.Services;
 using JobsInABA.DAL.Repositories;
+using JobsInABA.Workflows;
+using JobsInABA.Workflows.Models;
 
 namespace JobsInABA.Web.Api
 {
@@ -20,30 +22,29 @@ namespace JobsInABA.Web.Api
         private UsersRepo _user = new UsersRepo();
 
         // GET: api/Users
-        [Route("GetUsers")]
-        public IEnumerable<User> GetUsers()
+        //[Route("GetUsers")]
+        public List<UserDataModel> Get()
         {
-            return _user.GetUsers();
+            UserWorkflows oUserWorkflows = new UserWorkflows();
+            List<UserDataModel> oUserDataModels = oUserWorkflows.GetUsers();
+            return oUserDataModels;
         }
 
         // GET: api/Users/5
-        [Route("GetUsersByID")]
-        [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        //[Route("GetUsersByID")]
+        [ResponseType(typeof(UserDataModel))]
+        public IHttpActionResult Get(int id)
         {
-            if (id == null)
-            {
-                return StatusCode(HttpStatusCode.BadRequest);
-            }
+            UserWorkflows oUserWorkflows = new UserWorkflows();
+            UserDataModel oUserDataModel = oUserWorkflows.GetUser(id);
 
-            User user = _user.GetUserByID(id);
 
-            if (user == null)
+            if (oUserDataModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(oUserDataModel);
         }
 
         // PUT: api/Users/5
@@ -51,14 +52,13 @@ namespace JobsInABA.Web.Api
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)
         {
-            if (id == null || user == null || id != user.UserID)
-            {
-                return StatusCode(HttpStatusCode.BadRequest);
-            }
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+            if (id != user.UserID)
+            {
+                return StatusCode(HttpStatusCode.BadRequest);
             }
 
             try
@@ -107,11 +107,6 @@ namespace JobsInABA.Web.Api
         [ResponseType(typeof(User))]
         public IHttpActionResult DeleteUser(int id)
         {
-            if (id == null)
-            {
-                return StatusCode(HttpStatusCode.BadRequest);
-            }
-
             var result = _user.DeleteUser(id);
 
             return Ok(result);

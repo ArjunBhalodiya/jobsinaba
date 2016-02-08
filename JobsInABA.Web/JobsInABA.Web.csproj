@@ -170,7 +170,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AddressesController.cs" />
+    <Compile Include="Api\BusinessAddressesController.cs" />
+    <Compile Include="Api\BusinessEmailsController.cs" />
+    <Compile Include="Api\BusinessesController.cs" />
+    <Compile Include="Api\BusinessPhonesController.cs" />
+    <Compile Include="Api\BusinessUserMapsController.cs" />
+    <Compile Include="Api\ClassTypesController.cs" />
+    <Compile Include="Api\CountriesController.cs" />
+    <Compile Include="Api\EmailsController.cs" />
+    <Compile Include="Api\JobApplicationsController.cs" />
+    <Compile Include="Api\JobApplicationStatesController.cs" />
+    <Compile Include="Api\JobsController.cs" />
+    <Compile Include="Api\PhonesController.cs" />
+    <Compile Include="Api\RolesController.cs" />
     <Compile Include="Api\UserAccountsController.cs" />
+    <Compile Include="Api\UserAddressesController.cs" />
+    <Compile Include="Api\UserEmailsController.cs" />
+    <Compile Include="Api\UserPhonesController.cs" />
+    <Compile Include="Api\UserRolesController.cs" />
     <Compile Include="Api\UsersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -216,6 +234,7 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CompanyDataModel.cs" />
     <Compile Include="Models\DataModels.cs" />
     <Compile Include="Models\TodoItemViewModel.cs" />
     <Compile Include="Controllers\Utility\ModelErrorChecker.cs" />
@@ -389,6 +408,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\App\CompanyProfileController.js" />
     <Content Include="Scripts\App\HomeController.js" />
     <Content Include="Scripts\App\PersonProfileController.js" />
     <Content Include="Scripts\App\Module.js" />
@@ -1178,6 +1198,16 @@
     <Content Include="Views\App\ProfileLanguage.cshtml" />
     <Content Include="Views\App\LeftProfilePanelPortion.cshtml" />
     <Content Include="Views\App\PersonProfile.cshtml" />
+    <Content Include="Views\App\CompanyProfile.cshtml" />
+    <Content Include="Views\App\AddCompanySpecialties.cshtml" />
+    <Content Include="Views\App\AddEmployee.cshtml" />
+    <Content Include="Views\App\AddCompanyAchievement.cshtml" />
+    <Content Include="Views\App\AddLocation.cshtml" />
+    <Content Include="Views\App\AddCompanyProfile.cshtml" />
+    <Content Include="Views\App\ViewCompanyProfile.cshtml" />
+    <Content Include="Views\App\JobApplicationList.cshtml" />
+    <Content Include="Views\App\PublishedJob.cshtml" />
+    <Content Include="Views\App\CreateJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

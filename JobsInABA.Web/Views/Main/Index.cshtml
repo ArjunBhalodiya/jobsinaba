@@ -1,46 +1,47 @@
 ﻿@*div class="container-fluid" ng-cloak>
-        <header class="row site-header">
-            <nav class="col-md-10 col-md-offset-1">
-                <div class="row">
-                    <h1>JobsInABA.Web Template</h1>
-                </div>
-                <div class="row">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#/home">Home</a>
-                        </li>
-                        <li>
-                            <a href="#/todomanager">Todo Manager</a>
-                        </li>
-                        <li ng-show="loggedIn">
-                            <a href="" ng-click="logout()">{{username}} | Sign Out</a>
-                        </li>
-                        <li ng-hide="loggedIn">
-                            <a href="#/signin">Sign In</a>
-                        </li>
-                        <li ng-hide="loggedIn">
-                            <a href="#/register">Register</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-
-        <div class="row site-body">
-            <div class="col-md-10 col-md-offset-1" ng-view>
-            </div>
-        </div>
-
-        <div class="row site-footer">
-            <div class="col-md-10 col-md-offset-1">
-                <footer>
-                    <div class="text-right">
-                        Your Footer Here
+            <header class="row site-header">
+                <nav class="col-md-10 col-md-offset-1">
+                    <div class="row">
+                        <h1>JobsInABA.Web Template</h1>
                     </div>
-                </footer>
+                    <div class="row">
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#/home">Home</a>
+                            </li>
+                            <li>
+                                <a href="#/todomanager">Todo Manager</a>
+                            </li>
+                            <li ng-show="loggedIn">
+                                <a href="" ng-click="logout()">{{username}} | Sign Out</a>
+                            </li>
+                            <li ng-hide="loggedIn">
+                                <a href="#/signin">Sign In</a>
+                            </li>
+                            <li ng-hide="loggedIn">
+                                <a href="#/register">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                </nav>
+            </header>
+
+            <div class="row site-body">
+                <div class="col-md-10 col-md-offset-1" ng-view>
+                </div>
             </div>
-        </div>
-    </div>*@
+
+            <div class="row site-footer">
+                <div class="col-md-10 col-md-offset-1">
+                    <footer>
+                        <div class="text-right">
+                            Your Footer Here
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>*@
 
 @{
     ViewBag.Title = "Title";
@@ -48,10 +49,12 @@
 }
 
 @*@Scripts.Render("~/jquery")
-@Scripts.Render("~/angular")
-@Scripts.Render("~/bootstrap")*@
+    @Scripts.Render("~/angular")
+    @Scripts.Render("~/bootstrap")*@
 
 <script src="~/Scripts/jquery-2.2.0.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="~/Scripts/angular.js"></script>
 <script src="~/Scripts/angular-route.js"></script>
 <script src="~/Scripts/App/Module.js"></script>
@@ -60,6 +63,7 @@
 <script src="~/Scripts/App/RegisterController.js"></script>
 <script src="~/Scripts/App/SignInController.js"></script>
 <script src="~/Scripts/App/PersonProfileController.js"></script>
+<script src="~/Scripts/App/CompanyProfileController.js"></script>
 <div>
     <div id="top-wrapper" class="wrapper">
         <div class="pagewidth">
@@ -97,8 +101,6 @@
     </div>
     <div class="clear"></div>
 </div>
-
-
 <div ng-view>
     <div class="HomeController">
         <div id="slider-wrapper" class="wrapper" data-cycle-timeout=3000 data-cycle-speed="1000" data-cycle-slides="> .slide">
@@ -649,4 +651,59 @@
         </div>
     </div>
 </div>
+<script>
 
+    function addform(elem) {
+        var flag = $("#flag").val();
+        if (flag == "") {
+            var id = $(elem).attr("name");
+            var id1 = elem.id;
+            $("#" + id + "form").slideDown();
+            $("#" + id1).attr("onclick", "saveform(this)");
+            $("#flag").val("add");
+        }
+    }
+    function saveform(elem) {
+        var id = $(elem).attr("name");
+        var id1 = elem.id;
+        $("#" + id + "form").slideUp();
+        $("#" + id1).attr("onclick", "addform(this)");
+        $("#flag").val("");
+    }
+    function hideform(elem) {
+        var id = $(elem).attr("name");
+        var id1 = elem.id;
+        $("#" + id + "form").slideUp();
+        var flag = $("#flag").val();
+        if (flag == 'add') {
+            $("#" + id1).attr("onclick", "addform(this)");
+        }
+        else if (flag == 'edit') {
+            $("#" + id1).attr("onclick", "editform(this)");
+        }
+        $("#flag").val("");
+    }
+    function editform(elem) {
+        var flag = $("#flag").val();
+        if (flag == "") {
+            var id = $(elem).attr("name");
+            var id1 = elem.id;
+            $("#" + id + "form").slideDown();
+            $("#" + id1).attr("onclick", "updateform(this)");
+            $("#flag").val("edit");
+        }
+    }
+    function updateform(elem) {
+        var id = $(elem).attr("name");
+        var id1 = elem.id;
+        $("#" + id + "form").slideUp();
+        $("#" + id1).attr("onclick", "editform(this)");
+        $("#flag").val("");
+    }
+    function editformtag(elem) {
+        var id = $(elem).attr("name");
+        var id1 = elem.id;
+        $("#" + id + "form").slideDown();
+
+    }
+</script>

@@ -1,12 +1,47 @@
 ﻿app.controller('PersonProfileController', function ($scope, httpService) {
 
+    GetUserDetailByID();
+
+    //Profile Detail
+    function GetUserDetailByID() {
+        var userDetail = httpService.getByID(1, "/api/Users/get/");
+        userDetail.then(function (data) {
+            $scope.firstName = data.data.FirstName;
+            $scope.middleName = data.data.MiddleName;
+            $scope.lastName = data.data.LastName;
+            $scope.city = data.data.PrimaryAddressCity;
+            $scope.state = data.data.PrimaryAddressState;
+            $scope.zip = data.data.PrimaryAddressZipCode;
+            $scope.email = data.data.UserName;
+            $scope.phoneNo = data.data.PrimaryPhoneNumber;
+            $scope.cell = "+91 8866185697";
+        }, function (error) {
+            alert("Error");
+        });
+    };
+
+    //$scope.addProfileDetail = function () {
+    //    var Detail = {
+    //        UserName: $scope.email,
+    //        FirstName: $scope.firstName,
+    //        MiddleName: $scope.middleName,
+    //        LastName: $scope.lastName,
+    //        Summary: $scope.Summary
+    //    }
+    //    var addProfileDetail = httpService.post(Detail, "/api/Users/AddUsers");
+    //    addProfileDetail.then(function (pl) {
+    //        alert("Success");
+    //    }, function (errorPl) {
+    //        alert("Error");
+    //    });
+    //}
+
     ////Profile Summery
     //$scope.addProfileSummery = function () {
     //    var Summary = {
     //        UserName: $scope.email,
     //        Summary: $scope.Summary
     //    }
-
     //    var addSummary = httpService.post(Summary, "/api/Users/AddUsers");
     //    addSummary.then(function (pl) {
     //        alert("Success");

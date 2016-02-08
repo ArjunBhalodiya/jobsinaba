@@ -21,6 +21,26 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                             templateUrl: 'App/PersonProfile',
                             controller: 'PersonProfileController'
                         });
+    $routeProvider.when('/companyprofile',
+                        {
+                            templateUrl: 'App/CompanyProfile',
+                            controller: 'CompanyProfileController'
+                        });
+    $routeProvider.when('/viewcompanyprofile',
+                        {
+                            templateUrl: 'App/ViewCompanyProfile',
+                            controller: 'PersonProfileController'
+                        });
+    $routeProvider.when('/publishjob',
+                        {
+                            templateUrl: 'App/PublishedJob',
+                            controller: 'PersonProfileController'
+                        });
+    $routeProvider.when('/createjob',
+                        {
+                            templateUrl: 'App/CreateJob',
+                            controller: 'PersonProfileController'
+                        });
     $routeProvider.otherwise(
                         {
                             redirectTo: '/'

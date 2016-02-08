@@ -59,6 +59,51 @@ namespace JobsInABA.Web.Controllers
         {
             return PartialView();
         }
+
+        public ActionResult CompanyProfile()
+        {
+            return PartialView();
+        }
+        public ActionResult AddCompanyProfile()
+        {
+            return PartialView();
+        }
+        public ActionResult AddCompanySpecialties()
+        {
+            return PartialView();
+        }
+        public ActionResult AddEmployee()
+        {
+            return PartialView();
+        }
+        public ActionResult AddCompanyAchievement()
+        {
+            return PartialView();
+        }
+        public ActionResult AddLocation()
+        {
+            return PartialView();
+        }
+
+
+        public ActionResult ViewCompanyProfile()
+        {
+            return PartialView();
+        }
+        public ActionResult JobApplicationList()
+        {
+            return PartialView();
+        }
+
+        public ActionResult PublishedJob()
+        {
+            return PartialView();
+        }
+
+        public ActionResult CreateJob()
+        {
+            return PartialView();
+        }
         [Authorize]
         public ActionResult TodoManager()
         {

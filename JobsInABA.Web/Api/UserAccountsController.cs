@@ -33,10 +33,6 @@ namespace JobsInABA.Web.Api
         [ResponseType(typeof(UserAccount))]
         public IHttpActionResult GetUserAccount(int id)
         {
-            if (id == null)
-            {
-                return StatusCode(HttpStatusCode.BadRequest);
-            }
             UserAccount userAccount = _user.GetUserAccountByID(id);
             if (userAccount == null)
             {
@@ -51,13 +47,13 @@ namespace JobsInABA.Web.Api
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUserAccount(int id, UserAccount userAccount)
         {
-            if (id == null || userAccount == null || id != userAccount.UserAccountID)
-            {
-                return StatusCode(HttpStatusCode.BadRequest);
-            }
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+            if (id != userAccount.UserAccountID)
+            {
+                return StatusCode(HttpStatusCode.BadRequest);
             }
             try
             {
@@ -108,10 +104,6 @@ namespace JobsInABA.Web.Api
         [ResponseType(typeof(UserAccount))]
         public IHttpActionResult DeleteUserAccount(int id)
         {
-            if (id == null)
-            {
-                return StatusCode(HttpStatusCode.BadRequest);
-            }
             UserAccount userAccount = _user.GetUserAccountByID(id);
             if (userAccount == null)
             {
@@ -151,10 +143,6 @@ namespace JobsInABA.Web.Api
         [ResponseType(typeof(UserAccount))]
         public IHttpActionResult ActivateAccount(int id)
         {
-            if (id == null)
-            {
-                return StatusCode(HttpStatusCode.BadRequest);
-            }
             var user = _user.GetUserAccountByID(id);
 
             if (user == null)
