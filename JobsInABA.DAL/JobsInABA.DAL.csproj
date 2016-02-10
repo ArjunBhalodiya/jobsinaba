@@ -133,10 +133,24 @@
       <DependentUpon>JobInABAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AddressesRepos.cs" />
     <Compile Include="Repositories\AddressRepo.cs" />
+    <Compile Include="Repositories\BusinessAddressesRepos.cs" />
+    <Compile Include="Repositories\BusinessEmailsRepos.cs" />
+    <Compile Include="Repositories\BusinessesRepos.cs" />
+    <Compile Include="Repositories\BusinessPhonesRepos.cs" />
     <Compile Include="Repositories\BusinessRepo.cs" />
+    <Compile Include="Repositories\BusinessUserMapsRepos.cs" />
+    <Compile Include="Repositories\ClassTypesRepo.cs" />
+    <Compile Include="Repositories\CountriesRepo.cs" />
     <Compile Include="Repositories\EmailsRepo.cs" />
+    <Compile Include="Repositories\EmailsRepos.cs" />
+    <Compile Include="Repositories\JobApplicationsRepo.cs" />
+    <Compile Include="Repositories\JobApplicationStatesRepo.cs" />
+    <Compile Include="Repositories\JobsRepos.cs" />
     <Compile Include="Repositories\PhonesRepo.cs" />
+    <Compile Include="Repositories\PhonesRepos.cs" />
+    <Compile Include="Repositories\RolesRepos.cs" />
     <Compile Include="Repositories\UserAccountRepo.cs" />
     <Compile Include="Repositories\UsersRepo.cs" />
   </ItemGroup>

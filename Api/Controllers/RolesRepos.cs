@@ -10,26 +10,26 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using JobsInABA.DAL.Entities;
 
-namespace Api.Controllers
+namespace JobsInABA.DAL.Repositories
 {
-    public class UserController : ApiController
+    public class RolesRepos
     {
         private JobsInABAEntities db = new JobsInABAEntities();
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<Role> GetRoles()
         {
-            return db.Users;
+            return db.Roles;
         }
 
-        public User GetUser(int id)
+        public Role GetRole(int id)
         {
-            User user = db.Users.Find(id);
-            return user;
+            Role role = db.Roles.Find(id);
+            return role;
         }
 
-        public void UpdateUser(int id, User user)
+        public void UpdateRole(int id, Role role)
         {
-            db.Entry(user).State = EntityState.Modified;
+            db.Entry(role).State = EntityState.Modified;
 
             try
             {
@@ -41,31 +41,31 @@ namespace Api.Controllers
             }
         }
 
-        public User AddUser(User user)
+        public Role AddRole(Role role)
         {
-            db.Users.Add(user);
+            db.Roles.Add(role);
             db.SaveChanges();
 
-            return user;
+            return role;
         }
 
-        public User DeleteUser(int id)
+        public Role DeleteRole(int id)
         {
-            User user = db.Users.Find(id);
-            if (user == null)
+            Role role = db.Roles.Find(id);
+            if (role == null)
             {
                 return null;
             }
 
-            db.Users.Remove(user);
+            db.Roles.Remove(role);
             db.SaveChanges();
 
-            return user;
+            return role;
         }
 
-        private bool UserExists(int id)
+        private bool RoleExists(int id)
         {
-            return db.Users.Count(e => e.UserID == id) > 0;
+            return db.Roles.Count(e => e.RoleID == id) > 0;
         }
     }
 }

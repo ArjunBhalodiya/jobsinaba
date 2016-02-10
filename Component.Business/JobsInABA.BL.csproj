@@ -53,6 +53,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\AddressBL.cs" />
+    <Compile Include="BL\JobApplicationStateBL.cs" />
+    <Compile Include="BL\JobApplicationBL.cs" />
+    <Compile Include="BL\UserAccountBL.cs" />
+    <Compile Include="BL\RoleBL.cs" />
+    <Compile Include="BL\JobBL.cs" />
+    <Compile Include="BL\CountryBL.cs" />
+    <Compile Include="BL\ClassTypeBL.cs" />
+    <Compile Include="BL\BusinessUserMapBL.cs" />
+    <Compile Include="BL\BusinessPhoneBL.cs" />
+    <Compile Include="BL\BusinessEmailBL.cs" />
+    <Compile Include="BL\BusinessAddressBL.cs" />
     <Compile Include="BL\BusinessBL.cs" />
     <Compile Include="BL\EmailsBL.cs" />
     <Compile Include="BL\PhonesBL.cs" />

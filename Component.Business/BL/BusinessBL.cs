@@ -9,7 +9,7 @@ using JobsInABA.DAL.Entities;
 using JobsInABA.DTOs;
 using JobsInABA.DTOs.Assemblers;
 
-namespace JobsInABA.BL.BL
+namespace JobsInABA.BL
 {
     public class BusinessBL
     {

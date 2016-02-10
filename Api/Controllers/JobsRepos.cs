@@ -10,26 +10,26 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using JobsInABA.DAL.Entities;
 
-namespace Api.Controllers
+namespace JobsInABA.DAL.Repositories
 {
-    public class UserController : ApiController
+    public class JobsRepos
     {
         private JobsInABAEntities db = new JobsInABAEntities();
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<Job> GetJobs()
         {
-            return db.Users;
+            return db.Jobs;
         }
 
-        public User GetUser(int id)
+        public Job GetJob(int id)
         {
-            User user = db.Users.Find(id);
-            return user;
+            Job job = db.Jobs.Find(id);
+            return job;
         }
 
-        public void UpdateUser(int id, User user)
+        public void UpdateJob(int id, Job job)
         {
-            db.Entry(user).State = EntityState.Modified;
+            db.Entry(job).State = EntityState.Modified;
 
             try
             {
@@ -41,31 +41,31 @@ namespace Api.Controllers
             }
         }
 
-        public User AddUser(User user)
+        public Job AddJob(Job job)
         {
-            db.Users.Add(user);
+            db.Jobs.Add(job);
             db.SaveChanges();
 
-            return user;
+            return job;
         }
 
-        public User DeleteUser(int id)
+        public Job DeleteJob(int id)
         {
-            User user = db.Users.Find(id);
-            if (user == null)
+            Job job = db.Jobs.Find(id);
+            if (job == null)
             {
                 return null;
             }
 
-            db.Users.Remove(user);
+            db.Jobs.Remove(job);
             db.SaveChanges();
 
-            return user;
+            return job;
         }
 
-        private bool UserExists(int id)
+        private bool JobExists(int id)
         {
-            return db.Users.Count(e => e.UserID == id) > 0;
+            return db.Jobs.Count(e => e.JobID == id) > 0;
         }
     }
 }

@@ -10,26 +10,26 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using JobsInABA.DAL.Entities;
 
-namespace Api.Controllers
+namespace JobsInABA.DAL.Repositories
 {
-    public class UserController : ApiController
+    public class PhonesRepos
     {
         private JobsInABAEntities db = new JobsInABAEntities();
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<Phone> GetPhones()
         {
-            return db.Users;
+            return db.Phones;
         }
 
-        public User GetUser(int id)
+        public Phone GetPhone(int id)
         {
-            User user = db.Users.Find(id);
-            return user;
+            Phone phone = db.Phones.Find(id);
+            return phone;
         }
 
-        public void UpdateUser(int id, User user)
+        public void UpdatePhone(int id, Phone phone)
         {
-            db.Entry(user).State = EntityState.Modified;
+            db.Entry(phone).State = EntityState.Modified;
 
             try
             {
@@ -41,31 +41,31 @@ namespace Api.Controllers
             }
         }
 
-        public User AddUser(User user)
+        public Phone AddPhone(Phone phone)
         {
-            db.Users.Add(user);
+            db.Phones.Add(phone);
             db.SaveChanges();
 
-            return user;
+            return phone;
         }
 
-        public User DeleteUser(int id)
+        public Phone DeletePhone(int id)
         {
-            User user = db.Users.Find(id);
-            if (user == null)
+            Phone phone = db.Phones.Find(id);
+            if (phone == null)
             {
                 return null;
             }
 
-            db.Users.Remove(user);
+            db.Phones.Remove(phone);
             db.SaveChanges();
 
-            return user;
+            return phone;
         }
 
-        private bool UserExists(int id)
+        private bool PhoneExists(int id)
         {
-            return db.Users.Count(e => e.UserID == id) > 0;
+            return db.Phones.Count(e => e.PhoneID == id) > 0;
         }
     }
 }

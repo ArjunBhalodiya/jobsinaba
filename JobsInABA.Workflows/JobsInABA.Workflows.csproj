@@ -43,7 +43,11 @@
     <Compile Include="AddressWorkflows.cs" />
     <Compile Include="Models\AddressDataModel.cs" />
     <Compile Include="Models\Assemblers\AddressDataModelAssembler.cs" />
+    <Compile Include="Models\Assemblers\BussinessDataModelAssembler.cs" />
+    <Compile Include="Models\Assemblers\JobDataModelAssembler.cs" />
     <Compile Include="Models\Assemblers\UserDataModelAssembler.cs" />
+    <Compile Include="Models\BussinessDataModel.cs" />
+    <Compile Include="Models\JobDataModel.cs" />
     <Compile Include="Models\UserDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserWorkflows.cs" />
