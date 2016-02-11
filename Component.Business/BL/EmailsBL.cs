@@ -42,11 +42,11 @@ namespace JobsInABA.BL
             return oEmailDTO;
         }
 
-        public Email Create(Email oEmail)
+        public EmailDTO Create(EmailDTO oEmailDTO)
         {
-            if (oEmail != null)
+            if (oEmailDTO != null)
             {
-                return oEmailRepo.CreateEmail(oEmail);
+                return EmailAssembler.ToDTO(oEmailRepo.CreateEmail(EmailAssembler.ToEntity(oEmailDTO)));
             }
 
             return null;

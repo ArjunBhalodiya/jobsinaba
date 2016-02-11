@@ -18,6 +18,7 @@ namespace Api
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            new JobsInABA.DAL.Repositories.UsersRepo().GetUserByID(1);
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

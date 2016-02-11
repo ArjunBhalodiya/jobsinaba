@@ -10,7 +10,8 @@ namespace JobsInABA.Workflows.Models.Assemblers
 {
     public static class UserDataModelAssembler
     {
-        public static UserDataModel ToDataModel(UserDTO oUserDTO, AddressDTO oPrimaryAddressDTO, PhoneDTO oPrimaryPhoneDTO, EmailDTO oPrimaryEmailDTO) {
+        public static UserDataModel ToDataModel(UserDTO oUserDTO, AddressDTO oPrimaryAddressDTO, PhoneDTO oPrimaryPhoneDTO, EmailDTO oPrimaryEmailDTO)
+        {
 
             UserDataModel oUserDataModel = null;
 
@@ -47,7 +48,7 @@ namespace JobsInABA.Workflows.Models.Assemblers
                     oUserDataModel.PrimaryAddressCountryAbbreviation = oPrimaryAddressDTO.Country.Abbreviation;
                     oUserDataModel.PrimaryAddressCountryCode = oPrimaryAddressDTO.Country.Code;
                     oUserDataModel.PrimaryAddressCountryPhoneCode = oPrimaryAddressDTO.Country.PhoneCode;
-                    
+
                     oUserDataModel.PrimaryAddressTypeID = oPrimaryAddressDTO.AddressTypeID;
                     oUserDataModel.PrimaryAddressTypeName = oPrimaryAddressDTO.TypeCode.Name;
                     oUserDataModel.PrimaryAddressTypeCode = oPrimaryAddressDTO.TypeCode.Code;
@@ -69,7 +70,7 @@ namespace JobsInABA.Workflows.Models.Assemblers
                     oUserDataModel.PrimaryPhoneTypeClassTypeID = oPrimaryPhoneDTO.TypeCode.ClassTypeID;
 
                 }
-                
+
                 if (oPrimaryEmailDTO != null)
                 {
                     oUserDataModel.PrimaryEmail_EmailID = oPrimaryEmailDTO.EmailID;
@@ -87,10 +88,11 @@ namespace JobsInABA.Workflows.Models.Assemblers
             return oUserDataModel;
         }
 
-        public static UserDTO ToDTO(UserDataModel datamodel) {
-
+        public static UserDTO ToUserDTO(UserDataModel datamodel)
+        {
             UserDTO dto = new UserDTO();
-            if (datamodel != null) { 
+            if (datamodel != null)
+            {
                 dto.UserID = datamodel.UserID;
                 dto.UserName = datamodel.UserName;
                 dto.FirstName = datamodel.FirstName;
@@ -103,6 +105,54 @@ namespace JobsInABA.Workflows.Models.Assemblers
                 dto.insdt = datamodel.insdt;
                 dto.upduser = datamodel.upduser;
                 dto.upddt = datamodel.upddt;
+            }
+
+            return dto;
+        }
+
+        public static AddressDTO ToAddressDTO(UserDataModel datamodel)
+        {
+            AddressDTO dto = new AddressDTO();
+            if (datamodel != null)
+            {
+                dto.AddressID = datamodel.PrimaryUserAddressID;
+                dto.AddressTypeID = datamodel.PrimaryAddressTypeID;
+                dto.City = datamodel.PrimaryAddressCity;
+                dto.CountryID = datamodel.PrimaryAddressCountryID;
+                dto.Line1 = datamodel.PrimaryAddressLine1;
+                dto.Line2 = datamodel.PrimaryAddressLine2;
+                dto.Line3 = datamodel.PrimaryAddressLine3;
+                dto.State = datamodel.PrimaryAddressState;
+                dto.Title = datamodel.PrimaryAddressTitle;
+                dto.ZipCode = datamodel.PrimaryAddressZipCode;
+            }
+
+            return dto;
+        }
+
+        public static PhoneDTO ToPhoneDTO(UserDataModel datamodel)
+        {
+            PhoneDTO dto = new PhoneDTO();
+            if (datamodel != null)
+            {
+                dto.CountryID = datamodel.PrimaryAddressCountryID;
+                dto.Ext = datamodel.PrimaryPhoneExt;
+                dto.Number = datamodel.PrimaryPhoneNumber;
+                dto.PhoneID = datamodel.PrimaryPhone_PhoneID;
+                dto.PhoneTypeID = datamodel.PrimaryPhoneTypeID;
+            }
+
+            return dto;
+        }
+
+        public static EmailDTO ToEmailDTO(UserDataModel datamodel)
+        {
+            EmailDTO dto = new EmailDTO();
+            if (datamodel != null)
+            {
+                dto.Address = datamodel.PrimaryEmailAddress;
+                dto.EmailID = datamodel.PrimaryEmail_EmailID;
+                dto.EmailTypeID = datamodel.PrimaryEmailTypeID;
             }
 
             return dto;

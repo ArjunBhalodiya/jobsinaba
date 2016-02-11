@@ -38,7 +38,7 @@ namespace JobsInABA.DAL.Repositories
             }
         }
 
-        public Business PostBusiness(Business business)
+        public Business CreateBusiness(Business business)
         {
             db.Businesses.Add(business);
             db.SaveChanges();

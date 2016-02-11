@@ -55,6 +55,9 @@
     <Compile Include="BL\AddressBL.cs" />
     <Compile Include="BL\JobApplicationStateBL.cs" />
     <Compile Include="BL\JobApplicationBL.cs" />
+    <Compile Include="BL\UserPhoneBL.cs" />
+    <Compile Include="BL\UserEmailBL.cs" />
+    <Compile Include="BL\UserAddressBL.cs" />
     <Compile Include="BL\UserAccountBL.cs" />
     <Compile Include="BL\RoleBL.cs" />
     <Compile Include="BL\JobBL.cs" />

@@ -13,50 +13,50 @@ using JobsInABA.DAL.Repositories;
 
 namespace Api.Controllers
 {
-    public class UsersController : ApiController
+    public class RolesController : ApiController
     {
-        private UsersRepo db = new UsersRepo();
+        private RolesRepos db = new RolesRepos();
 
-        // GET: api/Users
-        public IEnumerable<User> GetUsers()
+        // GET: api/Roles
+        public IEnumerable<Role> GetRoles()
         {
-            return db.GetUsers();
+            return db.GetRoles();
         }
 
-        // GET: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        // GET: api/Roles/5
+        [ResponseType(typeof(Role))]
+        public IHttpActionResult GetRole(int id)
         {
-            User user = db.GetUserByID(id);
-            if (user == null)
+            Role role = db.GetRole(id);
+            if (role == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(role);
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Roles/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public IHttpActionResult PutRole(int id, Role role)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != user.UserID)
+            if (id != role.RoleID)
             {
                 return BadRequest();
             }
 
             try
             {
-                db.UpdateUser(user);
+                db.UpdateRole(id, role);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!RoleExists(id))
                 {
                     return NotFound();
                 }
@@ -69,30 +69,32 @@ namespace Api.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Users
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        // POST: api/Roles
+        [ResponseType(typeof(Role))]
+        public IHttpActionResult PostRole(Role role)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.CreateUser(user);
+            db.CreateRole(role);
 
-            return CreatedAtRoute("DefaultApi", new { id = user.UserID }, user);
+            return CreatedAtRoute("DefaultApi", new { id = role.RoleID }, role);
         }
 
-        // DELETE: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
+        // DELETE: api/Roles/5
+        [ResponseType(typeof(Role))]
+        public IHttpActionResult DeleteRole(int id)
         {
-            return Ok(db.DeleteUser(id));
+            Role role = db.DeleteRole(id);
+
+            return Ok(role);
         }
 
-        private bool UserExists(int id)
+        private bool RoleExists(int id)
         {
-            return db.GetUserByID(id) != null;
+            return db.GetRole(id) != null;
         }
     }
 }

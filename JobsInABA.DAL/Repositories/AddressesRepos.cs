@@ -29,7 +29,7 @@ namespace JobsInABA.DAL.Repositories
             return address;
         }
 
-        public void PutAddress(int id, Address address)
+        public void UpdateAddress(int id, Address address)
         {
             db.Entry(address).State = EntityState.Modified;
 

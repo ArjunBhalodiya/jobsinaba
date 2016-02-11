@@ -50,6 +50,7 @@
     <Compile Include="Models\JobDataModel.cs" />
     <Compile Include="Models\UserDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="JobWorkflows.cs" />
     <Compile Include="UserWorkflows.cs" />
   </ItemGroup>
   <ItemGroup>

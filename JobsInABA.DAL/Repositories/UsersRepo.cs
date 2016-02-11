@@ -14,19 +14,24 @@ namespace JobsInABA.DAL.Repositories
     public class UsersRepo
     {
         JobsInABAEntities _DBContext;
-        private JobsInABAEntities DBContext {
-            get { 
+        private JobsInABAEntities DBContext
+        {
+            get
+            {
                 if (_DBContext == null) _DBContext = new JobsInABAEntities();
 
                 return _DBContext;
             }
         }
 
-        public User GetUserByID(Int32 Id) {
+        public User GetUserByID(Int32 Id)
+        {
             User oUser = null;
-            
-            using (DBContext) {
-                try {
+
+            using (DBContext)
+            {
+                try
+                {
                     oUser = DBContext.Users
                             .Include(o => o.UserAddresses
                                             .Select(ua => ua.Address)
@@ -37,19 +42,20 @@ namespace JobsInABA.DAL.Repositories
                                             .Select(ua => ua.Address)
                                             .Select(ad => ad.Country)
                             )
-                            .Include (o => o.UserEmails
+                            .Include(o => o.UserEmails
                                             .Select(ue => ue.Email)
                                             .Select(e => e.TypeCode)
                                             .Select(typ => typ.ClassType)
                             )
-                            .Include (o => o.UserPhones
+                            .Include(o => o.UserPhones
                                             .Select(up => up.Phone)
                                             .Select(p => p.TypeCode)
                                             .Select(typ => typ.ClassType)
                             )
                             .FirstOrDefault(o => o.UserID == Id);
                 }
-                catch (Exception ex) { 
+                catch (Exception ex)
+                {
                     //Log Exception.
                 }
             }
@@ -61,8 +67,10 @@ namespace JobsInABA.DAL.Repositories
         {
             List<User> oUsers = null;
 
-            using (DBContext) {
-                try {
+            using (DBContext)
+            {
+                try
+                {
                     oUsers = DBContext.Users
                                 .Include(o => o.UserAddresses
                                             .Select(ua => ua.Address)
@@ -94,16 +102,19 @@ namespace JobsInABA.DAL.Repositories
             return oUsers;
         }
 
-        public User CreateUser(User oUser) {
+        public User CreateUser(User oUser)
+        {
             User oUserReturn = null;
 
             using (DBContext)
             {
-                try {
+                try
+                {
                     oUserReturn = DBContext.Users.Add(oUser);
                     DBContext.SaveChanges();
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     //Log Exception.
                 }
             }
@@ -132,7 +143,8 @@ namespace JobsInABA.DAL.Repositories
             return oUserReturn;
         }
 
-        public bool DeleteUser(int UserID) {
+        public bool DeleteUser(int UserID)
+        {
 
             Boolean isDeleted = false;
             using (DBContext)

@@ -192,24 +192,25 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AddressesRepos.cs" />
-    <Compile Include="Controllers\BusinessAddressesRepos.cs" />
-    <Compile Include="Controllers\BusinessEmailsRepos.cs" />
-    <Compile Include="Controllers\BusinessesRepos.cs" />
-    <Compile Include="Controllers\BusinessPhonesRepos.cs" />
-    <Compile Include="Controllers\BusinessUserMapsRepos.cs" />
-    <Compile Include="Controllers\ClassTypesRepo.cs" />
-    <Compile Include="Controllers\CountriesRepo.cs" />
-    <Compile Include="Controllers\EmailsRepos.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JobApplicationsRepo.cs" />
-    <Compile Include="Controllers\JobApplicationStatesRepo.cs" />
-    <Compile Include="Controllers\JobsRepos.cs" />
-    <Compile Include="Controllers\PhonesRepos.cs" />
-    <Compile Include="Controllers\RolesRepos.cs" />
-    <Compile Include="Controllers\UserAccountsRepos.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\AddressesController.cs" />
+    <Compile Include="Controllers\BusinessAddressesController.cs" />
+    <Compile Include="Controllers\BusinessEmailsController.cs" />
+    <Compile Include="Controllers\BusinessesController.cs" />
+    <Compile Include="Controllers\BusinessPhonesController.cs" />
+    <Compile Include="Controllers\BusinessUserMapsController.cs" />
+    <Compile Include="Controllers\ClassTypesController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\EmailsController.cs" />
+    <Compile Include="Controllers\JobApplicationsController.cs" />
+    <Compile Include="Controllers\JobApplicationStatesController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\PhonesController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\UserAccountsController.cs" />
+    <Compile Include="Controllers\UserAddressesController.cs" />
+    <Compile Include="Controllers\UserEmailsController.cs" />
+    <Compile Include="Controllers\UserPhonesController.cs" />
+    <Compile Include="Controllers\UserRolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -290,7 +291,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64872</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

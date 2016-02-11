@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace JobsInABA.BL
 {
-    class JobBL
+    public class JobBL
     {
         JobsRepos _JobRepos;
 

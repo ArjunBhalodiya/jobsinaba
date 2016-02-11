@@ -152,6 +152,9 @@
     <Compile Include="Repositories\PhonesRepos.cs" />
     <Compile Include="Repositories\RolesRepos.cs" />
     <Compile Include="Repositories\UserAccountRepo.cs" />
+    <Compile Include="Repositories\UserAddressesRepo.cs" />
+    <Compile Include="Repositories\UserEmailsRepo.cs" />
+    <Compile Include="Repositories\UserPhonesRepo.cs" />
     <Compile Include="Repositories\UsersRepo.cs" />
   </ItemGroup>
   <ItemGroup>

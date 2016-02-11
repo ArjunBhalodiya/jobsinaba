@@ -42,11 +42,11 @@ namespace JobsInABA.BL
             return oPhoneDTO;
         }
 
-        public Phone Create(Phone oPhone)
+        public PhoneDTO Create(PhoneDTO oPhoneDTO)
         {
-            if (oPhone != null)
+            if (oPhoneDTO != null)
             {
-                return oPhoneRepo.CreatePhone(oPhone);
+                return PhoneAssembler.ToDTO(oPhoneRepo.CreatePhone(PhoneAssembler.ToEntity(oPhoneDTO)));
             }
 
             return null;

@@ -43,11 +43,11 @@ namespace JobsInABA.BL
             return oAddressDTO;
         }
 
-        public Address Create(Address oAddress)
+        public AddressDTO Create(AddressDTO oAddressDTO)
         {
-            if (oAddress != null)
+            if (oAddressDTO != null)
             {
-                return oAddressRepo.CreateAddress(oAddress);
+                return AddressAssembler.ToDTO(oAddressRepo.CreateAddress(AddressAssembler.ToEntity(oAddressDTO)));
             }
 
             return null;

@@ -24,7 +24,7 @@ namespace JobsInABA.DAL.Repositories
             return email;
         }
 
-        public void PutEmail(int id, Email email)
+        public void UpdateEmail(int id, Email email)
         {
             db.Entry(email).State = EntityState.Modified;
 
@@ -38,7 +38,7 @@ namespace JobsInABA.DAL.Repositories
             }
         }
 
-        public Email PostEmail(Email email)
+        public Email CreateEmail(Email email)
         {
             db.Emails.Add(email);
 

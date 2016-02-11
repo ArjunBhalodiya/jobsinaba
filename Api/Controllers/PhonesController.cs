@@ -13,50 +13,50 @@ using JobsInABA.DAL.Repositories;
 
 namespace Api.Controllers
 {
-    public class UsersController : ApiController
+    public class PhonesController : ApiController
     {
-        private UsersRepo db = new UsersRepo();
+        private PhonesRepo db = new PhonesRepo();
 
-        // GET: api/Users
-        public IEnumerable<User> GetUsers()
+        // GET: api/Phones
+        public IEnumerable<Phone> GetPhones()
         {
-            return db.GetUsers();
+            return db.GetPhone();
         }
 
-        // GET: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        // GET: api/Phones/5
+        [ResponseType(typeof(Phone))]
+        public IHttpActionResult GetPhone(int id)
         {
-            User user = db.GetUserByID(id);
-            if (user == null)
+            Phone phone = db.GetPhoneByID(id);
+            if (phone == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(phone);
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Phones/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public IHttpActionResult PutPhone(int id, Phone phone)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != user.UserID)
+            if (id != phone.PhoneID)
             {
                 return BadRequest();
             }
 
             try
             {
-                db.UpdateUser(user);
+                db.UpdatePhone(phone);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!PhoneExists(id))
                 {
                     return NotFound();
                 }
@@ -69,30 +69,32 @@ namespace Api.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Users
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        // POST: api/Phones
+        [ResponseType(typeof(Phone))]
+        public IHttpActionResult PostPhone(Phone phone)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.CreateUser(user);
+            db.CreatePhone(phone);
 
-            return CreatedAtRoute("DefaultApi", new { id = user.UserID }, user);
+            return CreatedAtRoute("DefaultApi", new { id = phone.PhoneID }, phone);
         }
 
-        // DELETE: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
+        // DELETE: api/Phones/5
+        [ResponseType(typeof(Phone))]
+        public IHttpActionResult DeletePhone(int id)
         {
-            return Ok(db.DeleteUser(id));
+            var phone = db.DeletePhone(id);
+
+            return Ok(phone);
         }
 
-        private bool UserExists(int id)
+        private bool PhoneExists(int id)
         {
-            return db.GetUserByID(id) != null;
+            return db.GetPhoneByID(id) != null;
         }
     }
 }

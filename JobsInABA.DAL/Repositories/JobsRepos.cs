@@ -20,7 +20,8 @@ namespace JobsInABA.DAL.Repositories
 
         public Job GetJob(int id)
         {
-            Job job = db.Jobs.Find(id);
+            Job job = db.Jobs
+                .Include(p => p.JobApplications.Select(x => x.JobApplicationStates).Select(y => y)).FirstOrDefault(i => i.JobID == id);
             return job;
         }
 
