@@ -1,33 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using JobsInABA.DAL.Entities;
-using JobsInABA.DAL.Repositories;
+using JobsInABA.Workflows;
+using JobsInABA.Workflows.Models;
 
 namespace Api.Controllers
 {
     public class UsersController : ApiController
     {
-        private UsersRepo db = new UsersRepo();
+        private UserWorkflows db = new UserWorkflows();
 
         // GET: api/Users
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<UserDataModel> GetUsers()
         {
             return db.GetUsers();
         }
 
         // GET: api/Users/5
-        [ResponseType(typeof(User))]
+        [ResponseType(typeof(UserDataModel))]
         public IHttpActionResult GetUser(int id)
         {
-            User user = db.GetUserByID(id);
+            UserDataModel user = db.GetUser(id);
             if (user == null)
             {
                 return NotFound();
@@ -38,7 +34,7 @@ namespace Api.Controllers
 
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public IHttpActionResult PutUser(int id, UserDataModel user)
         {
             if (!ModelState.IsValid)
             {
@@ -70,8 +66,8 @@ namespace Api.Controllers
         }
 
         // POST: api/Users
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        [ResponseType(typeof(UserDataModel))]
+        public IHttpActionResult PostUser(UserDataModel user)
         {
             if (!ModelState.IsValid)
             {
@@ -92,7 +88,7 @@ namespace Api.Controllers
 
         private bool UserExists(int id)
         {
-            return db.GetUserByID(id) != null;
+            return db.GetUser(id) != null;
         }
     }
 }

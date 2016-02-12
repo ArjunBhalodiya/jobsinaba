@@ -51,12 +51,17 @@
     <Compile Include="Models\UserDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JobWorkflows.cs" />
+    <Compile Include="BusinessWorkflows.cs" />
     <Compile Include="UserWorkflows.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Component.Business\JobsInABA.BL.csproj">
       <Project>{1daaf6c5-9b7f-4f5c-aaef-aa6a4c87a282}</Project>
       <Name>JobsInABA.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobsInABA.DAL\JobsInABA.DAL.csproj">
+      <Project>{55fa9bec-5926-4cf3-9c8e-c98c8215eb76}</Project>
+      <Name>JobsInABA.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

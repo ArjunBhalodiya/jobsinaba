@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using JobsInABA.DAL.Entities;
-using JobsInABA.DAL.Repositories;
 using JobsInABA.Workflows;
-using JobsInABA.Workflows.Models;
 
 namespace Api.Controllers
 {
@@ -20,16 +13,16 @@ namespace Api.Controllers
         private AddressWorkflows db = new AddressWorkflows();
 
         // GET: api/Addresses
-        public IEnumerable<AddressDataModel> GetAddresses()
+        public IEnumerable<Address> GetAddresses()
         {
-            return db.GetAddresses();
+            return db.GetAddress();
         }
 
         // GET: api/Addresses/5
-        [ResponseType(typeof(AddressDataModel))]
+        [ResponseType(typeof(Address))]
         public IHttpActionResult GetAddress(int id)
         {
-            AddressDataModel address = db.GetAddress(id);
+            Address address = db.GetAddressByID(id);
             if (address == null)
             {
                 return NotFound();
@@ -44,7 +37,7 @@ namespace Api.Controllers
         {
             try
             {
-                //db.UpdateAddress(id, address);
+                db.UpdateAddress(address);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -62,26 +55,26 @@ namespace Api.Controllers
         }
 
         // POST: api/Addresses
-        [ResponseType(typeof(AddressDataModel))]
-        public IHttpActionResult PostAddress(AddressDataModel address)
+        [ResponseType(typeof(Address))]
+        public IHttpActionResult PostAddress(Address address)
         {
-            db.Create(address);
+            db.CreateAddress(address);
 
             return CreatedAtRoute("DefaultApi", new { id = address.AddressID }, address);
         }
 
         // DELETE: api/Addresses/5
-        [ResponseType(typeof(AddressDataModel))]
+        [ResponseType(typeof(Address))]
         public IHttpActionResult DeleteAddress(int id)
         {
-            //var address = db.DeleteAddress(id);
+            var address = db.DeleteAddress(id);
 
             return Ok();
         }
 
         private bool AddressExists(int id)
         {
-            return (db.GetAddress(id) != null);
+            return (db.GetAddressByID(id) != null);
         }
     }
 }

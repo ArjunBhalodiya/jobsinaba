@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace JobsInABA.BL
 {
-    class CountryBL
+    public class CountryBL
     {
         CountriesRepo _CountryRepos;
 

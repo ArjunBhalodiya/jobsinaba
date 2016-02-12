@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
 using JobsInABA.DAL.Repositories;
 using JobsInABA.DAL.Entities;
 using JobsInABA.DTOs;
@@ -23,6 +19,11 @@ namespace JobsInABA.BL
             }
         }
 
+        public List<BusinessDTO> Get()
+        {
+            return BusinessAssembler.ToDTOs(oBusinessRepo.GetBusinesss());
+        }
+
         public BusinessDTO Get(int BusinessID)
         {
             BusinessDTO oBusinessDTO = null;
@@ -40,6 +41,16 @@ namespace JobsInABA.BL
             if (oBusiness != null)
             {
                 return oBusinessRepo.CreateBusiness(oBusiness);
+            }
+
+            return null;
+        }
+
+        public BusinessDTO Create(BusinessDTO businessDTO)
+        {
+            if (businessDTO != null)
+            {
+                return BusinessAssembler.ToDTO(oBusinessRepo.CreateBusiness(BusinessAssembler.ToEntity(businessDTO)));
             }
 
             return null;

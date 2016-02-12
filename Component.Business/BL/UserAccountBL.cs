@@ -35,13 +35,13 @@ namespace JobsInABA.BL
             return oUserAccountDTO;
         }
 
-        public UserAccount Create(UserAccount oUserAccount)
+        public UserAccountDTO Create(UserAccountDTO oUserAccountDTO)
         {
-            if (oUserAccount != null)
+            if (oUserAccountDTO != null)
             {
-                return oUserAccountRepo.CreateUserAccount(oUserAccount);
+                oUserAccountRepo.CreateUserAccount(UserAccountAssembler.ToEntity(oUserAccountDTO));
+                return oUserAccountDTO;
             }
-
             return null;
         }
 

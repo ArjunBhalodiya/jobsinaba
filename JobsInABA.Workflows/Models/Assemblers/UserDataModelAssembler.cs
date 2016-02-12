@@ -10,7 +10,7 @@ namespace JobsInABA.Workflows.Models.Assemblers
 {
     public static class UserDataModelAssembler
     {
-        public static UserDataModel ToDataModel(UserDTO userDTO, AddressDTO addressDTO, PhoneDTO phoneDTO, EmailDTO emailDTO)
+        public static UserDataModel ToDataModel(UserDTO userDTO, UserAccountDTO accountDTO, AddressDTO addressDTO, PhoneDTO phoneDTO, EmailDTO emailDTO)
         {
 
             UserDataModel model = null;
@@ -32,6 +32,19 @@ namespace JobsInABA.Workflows.Models.Assemblers
                     upduser = userDTO.upduser,
                     upddt = userDTO.upddt
                 };
+
+                if (accountDTO != null)
+                {
+                    model.UserAccountID = accountDTO.UserAccountID;
+                    model.UserAccountinsdt = accountDTO.insdt;
+                    model.UserAccountinsuser = accountDTO.insuser;
+                    model.UserAccountIsActive = accountDTO.IsActive;
+                    model.UserAccountIsDeleted = accountDTO.IsDeleted;
+                    model.UserAccountPassword = accountDTO.Password;
+                    model.UserAccountupddt = accountDTO.upddt;
+                    model.UserAccountupduser = accountDTO.upduser;
+                    model.UserAccountUserName = accountDTO.UserName;
+                }
 
                 if (addressDTO != null)
                 {
@@ -88,6 +101,24 @@ namespace JobsInABA.Workflows.Models.Assemblers
             }
 
             return dto;
+        }
+
+        public static UserAccountDTO ToUserAccountDTO(UserDataModel datamodel)
+        {
+            UserAccountDTO model=new UserAccountDTO();
+            if (datamodel != null)
+            {
+                model.UserAccountID = datamodel.UserAccountID;
+                model.insdt = datamodel.UserAccountinsdt;
+                model.insuser = datamodel.UserAccountinsuser;
+                model.IsActive = datamodel.UserAccountIsActive;
+                model.IsDeleted = datamodel.UserAccountIsDeleted;
+                model.Password = datamodel.UserAccountPassword;
+                model.upddt = datamodel.UserAccountupddt;
+                model.upduser = datamodel.UserAccountupduser;
+                model.UserName = datamodel.UserAccountUserName;
+            }
+            return model;
         }
 
         public static AddressDTO ToAddressDTO(UserDataModel datamodel)

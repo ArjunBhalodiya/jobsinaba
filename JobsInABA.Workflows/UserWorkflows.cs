@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
 using JobsInABA.BL;
 using JobsInABA.DTOs;
 using JobsInABA.Workflows.Models;
@@ -15,79 +11,84 @@ namespace JobsInABA.Workflows
     {
         UsersBL _UsersBL;
         AddressBL _AddressBL;
+        UserAccountBL _AccountBL;
         EmailsBL _EmailsBL;
         PhonesBL _PhonesBL;
         AddressWorkflows _AddressWorkflows;
 
         public UserDataModel GetUser(int id)
         {
-
-            UserDataModel oUserDataModel = null;
+            UserDataModel userDataModel = null;
             if (id > 0)
             {
-                UserDTO oUserDTO = oUsersBL.Get(id);
+                UserDTO userDTO = usersBL.Get(id);
 
-                if (oUserDTO != null)
+                if (userDTO != null)
                 {
-                    oUserDataModel = GetUser(oUserDTO);
+                    userDataModel = GetUser(userDTO);
                 }
             }
-
-            return oUserDataModel;
+            return userDataModel;
         }
 
-        public UserDataModel GetUser(UserDTO oUserDTO)
+        public UserDataModel GetUser(UserDTO userDTO)
         {
-            UserDataModel oUserDataModel = null;
-            if (oUserDTO != null)
+            UserDataModel userDataModel = null;
+            if (userDTO != null)
             {
+                UserAddressDTO userAddressDTO = (userDTO.UserAddresses != null) ? userDTO.UserAddresses.Where(o => o.IsPrimary).FirstOrDefault() : null;
+                AddressDTO oPrimaryAddressDTO = (userAddressDTO != null) ? userAddressDTO.Address : null;
 
-                UserAddressDTO oUserAddressDTO = (oUserDTO.UserAddresses != null) ? oUserDTO.UserAddresses.Where(o => o.IsPrimary).FirstOrDefault() : null;
-                AddressDTO oPrimaryAddressDTO = (oUserAddressDTO != null) ? oUserAddressDTO.Address : null; //oAddressBL.Get(oUserAddressDTO.AddressID) : null;
+                UserAccountDTO userAccountDTO = (userDTO.UserAddresses != null) ? userDTO.UserAccounts.FirstOrDefault(o => o.IsActive == true) : null;
 
-                UserPhoneDTO oUserPhoneDTO = (oUserDTO.UserPhones != null) ? oUserDTO.UserPhones.Where(o => o.IsPrimary).FirstOrDefault() : null;
-                PhoneDTO oPrimaryPhoneDTO = (oUserPhoneDTO != null) ? oUserPhoneDTO.Phone : null; //oPhonesBL.Get(oUserPhoneDTO.PhoneID) : null;
+                UserPhoneDTO userPhoneDTO = (userDTO.UserPhones != null) ? userDTO.UserPhones.Where(o => o.IsPrimary).FirstOrDefault() : null;
+                PhoneDTO oPrimaryPhoneDTO = (userPhoneDTO != null) ? userPhoneDTO.Phone : null;
 
-                UserEmailDTO oUserEmailDTO = (oUserDTO.UserEmails != null) ? oUserDTO.UserEmails.Where(o => o.IsPrimary).FirstOrDefault() : null;
-                EmailDTO oPrimaryEmailDTO = (oUserEmailDTO != null) ? oUserEmailDTO.Email : null; //oEmailsBL.Get(oUserEmailDTO.EmailID) : null;
+                UserEmailDTO userEmailDTO = (userDTO.UserEmails != null) ? userDTO.UserEmails.Where(o => o.IsPrimary).FirstOrDefault() : null;
+                EmailDTO oPrimaryEmailDTO = (userEmailDTO != null) ? userEmailDTO.Email : null;
 
-                oUserDataModel = UserDataModelAssembler.ToDataModel(oUserDTO, oPrimaryAddressDTO, oPrimaryPhoneDTO, oPrimaryEmailDTO);
-                oUserDataModel.UserAddressID = (oUserAddressDTO != null) ? oUserAddressDTO.UserAddressID : 0;
-                oUserDataModel.UserPhoneID = (oUserPhoneDTO != null) ? oUserPhoneDTO.UserPhoneID : 0;
-                oUserDataModel.UserEmailID = (oUserEmailDTO != null) ? oUserEmailDTO.UserEmailID : 0;
+                userDataModel = UserDataModelAssembler.ToDataModel(userDTO, userAccountDTO, oPrimaryAddressDTO, oPrimaryPhoneDTO, oPrimaryEmailDTO);
+                userDataModel.UserAddressID = (userAddressDTO != null) ? userAddressDTO.UserAddressID : 0;
+                userDataModel.UserPhoneID = (userPhoneDTO != null) ? userPhoneDTO.UserPhoneID : 0;
+                userDataModel.UserEmailID = (userEmailDTO != null) ? userEmailDTO.UserEmailID : 0;
             }
-            return oUserDataModel;
+            return userDataModel;
         }
 
         public List<UserDataModel> GetUsers()
         {
-            List<UserDataModel> oUserDataModels = new List<UserDataModel>();
+            List<UserDataModel> userDataModels = new List<UserDataModel>();
 
-            List<UserDTO> oUserDTOs = oUsersBL.GetUsers();
+            List<UserDTO> userDTOs = usersBL.GetUsers();
 
-            oUserDataModels = oUserDTOs.Select(userdto => GetUser(userdto)).ToList();
+            userDataModels = userDTOs.Select(userdto => GetUser(userdto)).ToList();
 
-            return oUserDataModels;
+            return userDataModels;
         }
 
-        public UserDataModel CreateUser(UserDataModel oUserDataModel)
+        public UserDataModel CreateUser(UserDataModel userDataModel)
         {
-
-            if (oUserDataModel != null)
+            if (userDataModel != null)
             {
-                UserDTO oUserDTO = new UserDTO();
+                UserDTO userDTO = new UserDTO();
+                UserAccountDTO userAccountDTO = new UserAccountDTO();
                 PhoneDTO oPhoneDTO = new PhoneDTO();
                 EmailDTO oEmailDTO = new EmailDTO();
                 AddressDTO oAddressDTO = new AddressDTO();
 
-                oUserDTO = UserDataModelAssembler.ToUserDTO(oUserDataModel);
-                oPhoneDTO = UserDataModelAssembler.ToPhoneDTO(oUserDataModel);
-                oEmailDTO = UserDataModelAssembler.ToEmailDTO(oUserDataModel);
-                oAddressDTO = UserDataModelAssembler.ToAddressDTO(oUserDataModel);
+                userDTO = UserDataModelAssembler.ToUserDTO(userDataModel);
+                userAccountDTO = UserDataModelAssembler.ToUserAccountDTO(userDataModel);
+                oPhoneDTO = UserDataModelAssembler.ToPhoneDTO(userDataModel);
+                oEmailDTO = UserDataModelAssembler.ToEmailDTO(userDataModel);
+                oAddressDTO = UserDataModelAssembler.ToAddressDTO(userDataModel);
 
-                if (oUserDTO != null)
+                if (userDTO != null)
                 {
-                    oUserDTO = oUsersBL.Create(oUserDTO);
+                    userDTO = usersBL.Create(userDTO);
+                }
+                if (userAccountDTO != null)
+                {
+                    userAccountDTO = AccountBL.Create(userAccountDTO);
                 }
                 if (oPhoneDTO != null)
                 {
@@ -103,10 +104,65 @@ namespace JobsInABA.Workflows
                 }
             }
 
-            return oUserDataModel;
+            return userDataModel;
         }
 
-        private UsersBL oUsersBL
+        public UserDataModel UpdateUser(UserDataModel userDataModel)
+        {
+            if (userDataModel != null)
+            {
+                UserDTO userDTO = new UserDTO();
+                UserAccountDTO userAccountDTO = new UserAccountDTO();
+                PhoneDTO oPhoneDTO = new PhoneDTO();
+                EmailDTO oEmailDTO = new EmailDTO();
+                AddressDTO oAddressDTO = new AddressDTO();
+
+                userDTO = UserDataModelAssembler.ToUserDTO(userDataModel);
+                userAccountDTO = UserDataModelAssembler.ToUserAccountDTO(userDataModel);
+                oPhoneDTO = UserDataModelAssembler.ToPhoneDTO(userDataModel);
+                oEmailDTO = UserDataModelAssembler.ToEmailDTO(userDataModel);
+                oAddressDTO = UserDataModelAssembler.ToAddressDTO(userDataModel);
+
+                if (userDTO != null)
+                {
+                    userDTO = usersBL.Update(userDTO);
+                }
+                if (userAccountDTO != null)
+                {
+                    userAccountDTO = AccountBL.Update(userAccountDTO);
+                }
+                if (oPhoneDTO != null)
+                {
+                    oPhoneDTO = oPhonesBL.Update(oPhoneDTO);
+                }
+                if (oEmailDTO != null)
+                {
+                    oEmailsBL.Update(oEmailDTO);
+                }
+                if (oAddressDTO != null)
+                {
+                    oAddressBL.Update(oAddressDTO);
+                }
+            }
+
+            return userDataModel;
+        }
+
+        public bool DeleteUser(int id)
+        {
+            return AccountBL.Delete(id);
+        }
+
+        private UserAccountBL AccountBL
+        {
+            get
+            {
+                if (_AccountBL == null) _AccountBL = new UserAccountBL();
+                return _AccountBL;
+            }
+        }
+
+        private UsersBL usersBL
         {
             get
             {

@@ -73,6 +73,28 @@ namespace JobsInABA.Workflows
             return oJobDataModel;
         }
 
+        public JobDataModel UpdateJob(JobDataModel oJobDataModel)
+        {
+            if (oJobDataModel != null)
+            {
+                JobDTO oJobDTO = new JobDTO();
+
+                oJobDTO = JobDataModelAssembler.ToJobDTO(oJobDataModel);
+
+                if (oJobDTO != null)
+                {
+                    oJobDTO = oJobsBL.Update(oJobDTO);
+                }
+            }
+
+            return oJobDataModel;
+        }
+
+        public bool DeleteJob(int id)
+        {
+            return oJobsBL.Delete(id);
+        }
+
         private JobBL oJobsBL
         {
             get

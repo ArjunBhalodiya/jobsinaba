@@ -8,55 +8,136 @@ using JobsInABA.BL;
 using JobsInABA.DTOs;
 using JobsInABA.Workflows.Models;
 using JobsInABA.Workflows.Models.Assemblers;
+using JobsInABA.DAL.Repositories;
 
 namespace JobsInABA.Workflows
 {
-    public class AddressWorkflows
+    public class AddressWorkflows:AddressRepo
     {
-        AddressBL _Address;
+        //AddressBL _AddressBL;
+        //CountryBL _CountryBL;
+        //EmailsBL _EmailsBL;
+        //PhonesBL _PhonesBL;
 
-        public List<AddressDataModel> GetAddresses()
-        {
-            List<AddressDataModel> addressDataModels = new List<AddressDataModel>();
+        //public JobDataModel GetJob(int id)
+        //{
+        //    JobDataModel model = new JobDataModel();
+        //    if (id > 0)
+        //    {
+        //        JobDTO oJobDTO = oJobsBL.Get(id);
 
-            List<AddressDTO> addressDTOs = addressBL.Get();
+        //        if (oJobDTO != null)
+        //        {
+        //            model = GetJob(oJobDTO);
+        //        }
+        //    }
 
-            return AddressDataModelAssembler.ToDataModels(addressDTOs).ToList();
-        }
+        //    return model;
+        //}
 
-        public IEnumerable<AddressDataModel> GetAddresses(IEnumerable<AddressDTO> dtos)
-        {
-            return AddressDataModelAssembler.ToDataModels(dtos);
-        }
+        //public JobDataModel GetJob(JobDTO oJobDTO)
+        //{
+        //    JobDataModel oJobDataModel = null;
+        //    if (oJobDTO != null)
+        //    {
+        //        oJobDataModel = JobDataModelAssembler.ToDataModel(oJobsBL.Get(oJobDTO.JobID), null, null);
+        //    }
+        //    return oJobDataModel;
+        //}
 
-        public AddressDataModel GetAddress(int id)
-        {
-            if (id > 0)
-            {
-                AddressDTO addressDTO = addressBL.Get(id);
-                return AddressDataModelAssembler.ToDataModel(addressDTO);
-            }
+        //public List<JobDataModel> GetJobs()
+        //{
+        //    List<JobDataModel> oJobDataModels = new List<JobDataModel>();
 
-            return null;
-        }
+        //    List<JobDTO> oJobDTOs = oJobsBL.Get().ToList();
 
-        public AddressDataModel Create(AddressDataModel addressDataModel)
-        {
-            if (addressDataModel != null)
-            {
-                var addressDTO = AddressDataModelAssembler.ToDTO(addressDataModel);
+        //    oJobDataModels = oJobDTOs.Select(Jobdto => GetJob(Jobdto)).ToList();
 
-                if (addressDTO != null)
-                {
-                    addressDTO = addressBL.Create(AddressDataModelAssembler.ToDTO(addressDataModel));
-                }
-            }
-            return addressDataModel;
-        }
+        //    return oJobDataModels;
+        //}
 
-        public AddressBL addressBL
-        {
-            get { return new AddressBL(); }
-        }
+        //public JobDataModel CreateJob(JobDataModel oJobDataModel)
+        //{
+        //    if (oJobDataModel != null)
+        //    {
+        //        JobDTO oJobDTO = new JobDTO();
+
+        //        oJobDTO = JobDataModelAssembler.ToJobDTO(oJobDataModel);
+
+        //        if (oJobDTO != null)
+        //        {
+        //            oJobDTO = oJobsBL.Create(oJobDTO);
+        //        }
+        //    }
+
+        //    return oJobDataModel;
+        //}
+
+        //public JobDataModel UpdateJob(JobDataModel oJobDataModel)
+        //{
+        //    if (oJobDataModel != null)
+        //    {
+        //        JobDTO oJobDTO = new JobDTO();
+
+        //        oJobDTO = JobDataModelAssembler.ToJobDTO(oJobDataModel);
+
+        //        if (oJobDTO != null)
+        //        {
+        //            oJobDTO = oJobsBL.Update(oJobDTO);
+        //        }
+        //    }
+
+        //    return oJobDataModel;
+        //}
+
+        //public bool DeleteJob(int id)
+        //{
+        //    return oJobsBL.Delete(id);
+        //}
+
+        //private JobBL oJobsBL
+        //{
+        //    get
+        //    {
+        //        if (_JobsBL == null) _JobsBL = new JobBL();
+        //        return _JobsBL;
+        //    }
+        //}
+
+        //private AddressBL oAddressBL
+        //{
+        //    get
+        //    {
+        //        if (_AddressBL == null) _AddressBL = new AddressBL();
+        //        return _AddressBL;
+        //    }
+        //}
+
+        //private EmailsBL oEmailsBL
+        //{
+        //    get
+        //    {
+        //        if (_EmailsBL == null) _EmailsBL = new EmailsBL();
+        //        return _EmailsBL;
+        //    }
+        //}
+
+        //private PhonesBL oPhonesBL
+        //{
+        //    get
+        //    {
+        //        if (_PhonesBL == null) _PhonesBL = new PhonesBL();
+        //        return _PhonesBL;
+        //    }
+        //}
+
+        //private AddressWorkflows oAddressWorkflows
+        //{
+        //    get
+        //    {
+        //        if (_AddressWorkflows == null) _AddressWorkflows = new AddressWorkflows();
+        //        return _AddressWorkflows;
+        //    }
+        //}
     }
 }

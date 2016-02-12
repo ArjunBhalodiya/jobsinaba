@@ -19,15 +19,13 @@ namespace JobsInABA.Web.Api
     [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
-        private UsersRepo _user = new UsersRepo();
+        private UserWorkflows _user = new UserWorkflows();
 
         // GET: api/Users
         //[Route("GetUsers")]
         public List<UserDataModel> Get()
         {
-            UserWorkflows oUserWorkflows = new UserWorkflows();
-            List<UserDataModel> oUserDataModels = oUserWorkflows.GetUsers();
-            return oUserDataModels;
+            return _user.GetUsers();
         }
 
         // GET: api/Users/5
@@ -35,22 +33,19 @@ namespace JobsInABA.Web.Api
         [ResponseType(typeof(UserDataModel))]
         public IHttpActionResult Get(int id)
         {
-            UserWorkflows oUserWorkflows = new UserWorkflows();
-            UserDataModel oUserDataModel = oUserWorkflows.GetUser(id);
-
-
-            if (oUserDataModel == null)
+            UserDataModel dataModel = _user.GetUser(id);
+            if (dataModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(oUserDataModel);
+            return Ok(dataModel);
         }
 
         // PUT: api/Users/5
         [Route("UpdateUsers")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public IHttpActionResult PutUser(int id, UserDataModel user)
         {
             if (!ModelState.IsValid)
             {
@@ -82,8 +77,8 @@ namespace JobsInABA.Web.Api
 
         // POST: api/Users
         [Route("AddUsers")]
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        [ResponseType(typeof(UserDataModel))]
+        public IHttpActionResult PostUser(UserDataModel user)
         {
             if (user == null)
             {
@@ -104,7 +99,7 @@ namespace JobsInABA.Web.Api
 
         // DELETE: api/Users/5
         [Route("DeleteUsers")]
-        [ResponseType(typeof(User))]
+        [ResponseType(typeof(UserDataModel))]
         public IHttpActionResult DeleteUser(int id)
         {
             var result = _user.DeleteUser(id);
