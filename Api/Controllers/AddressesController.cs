@@ -10,24 +10,26 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using JobsInABA.DAL.Entities;
 using JobsInABA.DAL.Repositories;
+using JobsInABA.Workflows;
+using JobsInABA.Workflows.Models;
 
 namespace Api.Controllers
 {
     public class AddressesController : ApiController
     {
-        private AddressesRepos db = new AddressesRepos();
+        private AddressWorkflows db = new AddressWorkflows();
 
         // GET: api/Addresses
-        public IEnumerable<Address> GetAddresses()
+        public IEnumerable<AddressDataModel> GetAddresses()
         {
             return db.GetAddresses();
         }
 
         // GET: api/Addresses/5
-        [ResponseType(typeof(Address))]
+        [ResponseType(typeof(AddressDataModel))]
         public IHttpActionResult GetAddress(int id)
         {
-            Address address = db.GetAddress(id);
+            AddressDataModel address = db.GetAddress(id);
             if (address == null)
             {
                 return NotFound();
@@ -42,7 +44,7 @@ namespace Api.Controllers
         {
             try
             {
-                db.UpdateAddress(id, address);
+                //db.UpdateAddress(id, address);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -60,21 +62,21 @@ namespace Api.Controllers
         }
 
         // POST: api/Addresses
-        [ResponseType(typeof(Address))]
-        public IHttpActionResult PostAddress(Address address)
+        [ResponseType(typeof(AddressDataModel))]
+        public IHttpActionResult PostAddress(AddressDataModel address)
         {
-            db.AddAddress(address);
+            db.Create(address);
 
             return CreatedAtRoute("DefaultApi", new { id = address.AddressID }, address);
         }
 
         // DELETE: api/Addresses/5
-        [ResponseType(typeof(Address))]
+        [ResponseType(typeof(AddressDataModel))]
         public IHttpActionResult DeleteAddress(int id)
         {
-            var address = db.DeleteAddress(id);
+            //var address = db.DeleteAddress(id);
 
-            return Ok(address);
+            return Ok();
         }
 
         private bool AddressExists(int id)

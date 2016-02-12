@@ -10,152 +10,49 @@ namespace JobsInABA.Workflows.Models
     [DataContract()]
     public class UserDataModel
     {
-        [DataMember()]
-        public Int32 UserID { get; set; }
+        public int UserID { get; set; }
+        public string UserName { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
+        public Nullable<int> insuser { get; set; }
+        public Nullable<System.DateTime> insdt { get; set; }
+        public Nullable<int> upduser { get; set; }
+        public Nullable<System.DateTime> upddt { get; set; }
 
-        [DataMember()]
-        public String UserName { get; set; }
+        public int UserAccountID { get; set; }
+        public string UserAccountUserName { get; set; }
+        public byte[] UserAccountPassword { get; set; }
+        public bool UserAccountIsActive { get; set; }
+        public bool UserAccountIsDeleted { get; set; }
+        public Nullable<int> UserAccountinsuser { get; set; }
+        public Nullable<System.DateTime> UserAccountinsdt { get; set; }
+        public Nullable<int> UserAccountupduser { get; set; }
+        public Nullable<System.DateTime> UserAccountupddt { get; set; }
 
-        [DataMember()]
-        public String FirstName { get; set; }
+        public int UserAddressID { get; set; }
+        public string UserAddressTitle { get; set; }
+        public string UserAddressLine1 { get; set; }
+        public string UserAddressLine2 { get; set; }
+        public string UserAddressLine3 { get; set; }
+        public string UserAddressCity { get; set; }
+        public string UserAddressState { get; set; }
+        public string UserAddressZipCode { get; set; }
+        public Nullable<int> UserAddressCountryID { get; set; }
+        public Nullable<int> UserAddressAddressTypeID { get; set; }
 
-        [DataMember()]
-        public String MiddleName { get; set; }
+        public int UserEmailID { get; set; }
+        public string UserEmailAddress { get; set; }
+        public Nullable<int> UserEmailTypeID { get; set; }
 
-        [DataMember()]
-        public String LastName { get; set; }
-
-        [DataMember()]
-        public Nullable<DateTime> DOB { get; set; }
-
-        [DataMember()]
-        public Boolean IsActive { get; set; }
-
-        [DataMember()]
-        public Boolean IsDeleted { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> insuser { get; set; }
-
-        [DataMember()]
-        public Nullable<DateTime> insdt { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> upduser { get; set; }
-
-        [DataMember()]
-        public Nullable<DateTime> upddt { get; set; }
-
-        [DataMember()]
-        public Int32 PrimaryUserAddressID { get; set; }
-
-        [DataMember()]
-        public Int32 PrimayAddress_AddressID { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressTitle { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressLine1 { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressLine2 { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressLine3 { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressCity { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressState { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressZipCode { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> PrimaryAddressCountryID { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressCountryName { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressCountryAbbreviation { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressCountryCode { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressCountryPhoneCode { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> PrimaryAddressTypeID { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressTypeName { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressTypeCode { get; set; }
-
-        [DataMember()]
-        public String PrimaryAddressTypeDescription { get; set; }
-
-        [DataMember()]
-        public Int32 PrimaryAddressTypeClassTypeID { get; set; }
-
-        [DataMember()]
-        public Int32 PrimaryUserEmailID { get; set; }
-
-        [DataMember()]
-        public Int32 PrimaryEmail_EmailID { get; set; }
-
-        [DataMember()]
-        public String PrimaryEmailAddress { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> PrimaryEmailTypeID { get; set; }
-
-        [DataMember()]
-        public String PrimaryEmailTypeName { get; set; }
-
-        [DataMember()]
-        public String PrimaryEmailTypeCode { get; set; }
-
-        [DataMember()]
-        public String PrimaryEmailTypeDescription { get; set; }
-
-        [DataMember()]
-        public Int32 PrimaryEmailTypeClassTypeID { get; set; }
-
-        [DataMember()]
-        public Int32 PrimaryUserPhoneID { get; set; }
-
-        [DataMember()]
-        public Int32 PrimaryPhone_PhoneID { get; set; }
-
-        [DataMember()]
-        public String PrimaryPhoneNumber { get; set; }
-
-        [DataMember()]
-        public String PrimaryPhoneExt { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> PrimaryPhoneTypeID { get; set; }
-
-        [DataMember()]
-        public String PrimaryPhoneTypeName { get; set; }
-
-        [DataMember()]
-        public String PrimaryPhoneTypeCode { get; set; }
-
-        [DataMember()]
-        public String PrimaryPhoneTypeDescription { get; set; }
-
-        [DataMember()]
-        public Int32 PrimaryPhoneTypeClassTypeID { get; set; }
-
-        [DataMember()]
-        public IEnumerable<AddressDataModel> Addresses { get; set; }
+        public int UserPhoneID { get; set; }
+        public Nullable<int> UserPhoneCountryID { get; set; }
+        public string UserPhoneNumber { get; set; }
+        public string UserPhoneExt { get; set; }
+        public Nullable<int> UserPhoneTypeID { get; set; }
 
     }
 }

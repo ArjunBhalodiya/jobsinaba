@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JobsInABA.Workflows.Models
 {
-    class JobDataModel
+    public class JobDataModel
     {
         public int JobID { get; set; }
         public int BusinessID { get; set; }

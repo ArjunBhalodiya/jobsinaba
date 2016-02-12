@@ -10,38 +10,42 @@ namespace JobsInABA.Workflows.Models.Assemblers
 {
     public static class AddressDataModelAssembler
     {
-        public static AddressDataModel ToDataModel(AddressDTO dto) { 
-            
+        public static AddressDataModel ToDataModel(AddressDTO dto)
+        {
+
             AddressDataModel datamodel = new AddressDataModel();
-            
-            if(dto != null) {
+
+            if (dto != null)
+            {
                 datamodel.AddressID = dto.AddressID;
-			    datamodel.Title = dto.Title;
-			    datamodel.Line1 = dto.Line1;
-			    datamodel.Line2 = dto.Line2;
-			    datamodel.Line3 = dto.Line3;
-			    datamodel.City = dto.City;
-			    datamodel.State = dto.State;
-			    datamodel.ZipCode = dto.ZipCode;
+                datamodel.Title = dto.Title;
+                datamodel.Line1 = dto.Line1;
+                datamodel.Line2 = dto.Line2;
+                datamodel.Line3 = dto.Line3;
+                datamodel.City = dto.City;
+                datamodel.State = dto.State;
+                datamodel.ZipCode = dto.ZipCode;
                 datamodel.AddressTypeID = dto.AddressTypeID;
-                datamodel.AddressIsPrimary = false;
+            }
+            if (dto.Country != null)
+            {
+                CountryDTO countrydto = dto.Country;
+                datamodel.CountryID = countrydto.CountryID;
+                datamodel.AddressCountryAbbreviation = countrydto.Abbreviation;
+                datamodel.AddressCountryCode = countrydto.Code;
+                datamodel.AddressCountryName = countrydto.Name;
+                datamodel.AddressCountryPhoneCode = countrydto.PhoneCode;
+            }
 
-                if(dto.Country != null) {
-                    CountryDTO countrydto = dto.Country;
-			        datamodel.AddressCountryID = countrydto.CountryID;
-			        datamodel.AddressCountryName = countrydto.Name;
-			        datamodel.AddressCountryAbbreviation = countrydto.Abbreviation;
-			        datamodel.AddressCountryCode = countrydto.Code;
-			        datamodel.AddressCountryPhoneCode = countrydto.PhoneCode;
-                }
-
-                if(dto.TypeCode != null) {
-                    TypeCodeDTO typecodedto = dto.TypeCode;
-                    datamodel.AddressTypeName = typecodedto.Name;
-			        datamodel.AddressTypeCode = typecodedto.Code;
-			        datamodel.AddressTypeDescription = typecodedto.Description;
-			        datamodel.AddressTypeClassTypeID = typecodedto.ClassTypeID;
-                }
+            if (dto.TypeCode != null)
+            {
+                TypeCodeDTO typecodedto = dto.TypeCode;
+                datamodel.AddressTypeID = typecodedto.TypeCodeID;
+                datamodel.AddressTypeCode = typecodedto.Code;
+                datamodel.AddressTypeCodeClassTypeID = typecodedto.ClassTypeID;
+                datamodel.AddressTypeCodeDescription = typecodedto.Description;
+                datamodel.AddressTypeCodeName = typecodedto.Name;
+                datamodel.AddressTypeCodeParentTypeCodeID = typecodedto.ParentTypeCodeID;
             }
 
             return datamodel;
@@ -73,7 +77,5 @@ namespace JobsInABA.Workflows.Models.Assemblers
 
             return dtos.Select(e => ToDataModel(e)).ToList();
         }
-
-
     }
 }

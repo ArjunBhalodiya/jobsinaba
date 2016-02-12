@@ -38,7 +38,6 @@ namespace JobsInABA.Workflows
 
         public UserDataModel GetUser(UserDTO oUserDTO)
         {
-
             UserDataModel oUserDataModel = null;
             if (oUserDTO != null)
             {
@@ -53,19 +52,15 @@ namespace JobsInABA.Workflows
                 EmailDTO oPrimaryEmailDTO = (oUserEmailDTO != null) ? oUserEmailDTO.Email : null; //oEmailsBL.Get(oUserEmailDTO.EmailID) : null;
 
                 oUserDataModel = UserDataModelAssembler.ToDataModel(oUserDTO, oPrimaryAddressDTO, oPrimaryPhoneDTO, oPrimaryEmailDTO);
-                oUserDataModel.PrimaryUserAddressID = (oUserAddressDTO != null) ? oUserAddressDTO.UserAddressID : 0;
-                oUserDataModel.PrimaryUserPhoneID = (oUserPhoneDTO != null) ? oUserPhoneDTO.UserPhoneID : 0;
-                oUserDataModel.PrimaryUserEmailID = (oUserEmailDTO != null) ? oUserEmailDTO.UserEmailID : 0;
-
-                //Get All the Addresses.
-                oUserDataModel.Addresses = (oUserDTO.UserAddresses != null) ? oAddressWorkflows.GetAddresses(oUserDTO.UserAddresses.Select(ua => ua.Address).ToList()) : null;
+                oUserDataModel.UserAddressID = (oUserAddressDTO != null) ? oUserAddressDTO.UserAddressID : 0;
+                oUserDataModel.UserPhoneID = (oUserPhoneDTO != null) ? oUserPhoneDTO.UserPhoneID : 0;
+                oUserDataModel.UserEmailID = (oUserEmailDTO != null) ? oUserEmailDTO.UserEmailID : 0;
             }
             return oUserDataModel;
         }
 
         public List<UserDataModel> GetUsers()
         {
-
             List<UserDataModel> oUserDataModels = new List<UserDataModel>();
 
             List<UserDTO> oUserDTOs = oUsersBL.GetUsers();

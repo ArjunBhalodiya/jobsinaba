@@ -52,7 +52,7 @@ namespace Api.Controllers
 
             try
             {
-                db.UpdateUserAddress(is,userAddress);
+                db.UpdateUserAddress(id,userAddress);
             }
             catch (DbUpdateConcurrencyException)
             {

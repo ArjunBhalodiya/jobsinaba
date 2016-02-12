@@ -10,82 +10,62 @@ namespace JobsInABA.Workflows.Models.Assemblers
 {
     public static class UserDataModelAssembler
     {
-        public static UserDataModel ToDataModel(UserDTO oUserDTO, AddressDTO oPrimaryAddressDTO, PhoneDTO oPrimaryPhoneDTO, EmailDTO oPrimaryEmailDTO)
+        public static UserDataModel ToDataModel(UserDTO userDTO, AddressDTO addressDTO, PhoneDTO phoneDTO, EmailDTO emailDTO)
         {
 
-            UserDataModel oUserDataModel = null;
+            UserDataModel model = null;
 
-            if (oUserDTO != null)
+            if (userDTO != null)
             {
-                oUserDataModel = new UserDataModel
+                model = new UserDataModel
                 {
-                    UserID = oUserDTO.UserID,
-                    UserName = oUserDTO.UserName,
-                    FirstName = oUserDTO.FirstName,
-                    MiddleName = oUserDTO.MiddleName,
-                    LastName = oUserDTO.LastName,
-                    DOB = oUserDTO.DOB,
-                    IsActive = oUserDTO.IsActive,
-                    IsDeleted = oUserDTO.IsDeleted,
-                    insuser = oUserDTO.insuser,
-                    insdt = oUserDTO.insdt,
-                    upduser = oUserDTO.upduser,
-                    upddt = oUserDTO.upddt
+                    UserID = userDTO.UserID,
+                    UserName = userDTO.UserName,
+                    FirstName = userDTO.FirstName,
+                    MiddleName = userDTO.MiddleName,
+                    LastName = userDTO.LastName,
+                    DOB = userDTO.DOB,
+                    IsActive = userDTO.IsActive,
+                    IsDeleted = userDTO.IsDeleted,
+                    insuser = userDTO.insuser,
+                    insdt = userDTO.insdt,
+                    upduser = userDTO.upduser,
+                    upddt = userDTO.upddt
                 };
 
-                if (oPrimaryAddressDTO != null)
+                if (addressDTO != null)
                 {
-                    oUserDataModel.PrimayAddress_AddressID = oPrimaryAddressDTO.AddressID;
-                    oUserDataModel.PrimaryAddressTitle = oPrimaryAddressDTO.Title;
-                    oUserDataModel.PrimaryAddressLine1 = oPrimaryAddressDTO.Line1;
-                    oUserDataModel.PrimaryAddressLine2 = oPrimaryAddressDTO.Line2;
-                    oUserDataModel.PrimaryAddressLine3 = oPrimaryAddressDTO.Line3;
-                    oUserDataModel.PrimaryAddressCity = oPrimaryAddressDTO.City;
-                    oUserDataModel.PrimaryAddressState = oPrimaryAddressDTO.State;
-                    oUserDataModel.PrimaryAddressZipCode = oPrimaryAddressDTO.ZipCode;
-                    oUserDataModel.PrimaryAddressCountryID = oPrimaryAddressDTO.CountryID;
-                    oUserDataModel.PrimaryAddressCountryName = oPrimaryAddressDTO.Country.Name;
-                    oUserDataModel.PrimaryAddressCountryAbbreviation = oPrimaryAddressDTO.Country.Abbreviation;
-                    oUserDataModel.PrimaryAddressCountryCode = oPrimaryAddressDTO.Country.Code;
-                    oUserDataModel.PrimaryAddressCountryPhoneCode = oPrimaryAddressDTO.Country.PhoneCode;
-
-                    oUserDataModel.PrimaryAddressTypeID = oPrimaryAddressDTO.AddressTypeID;
-                    oUserDataModel.PrimaryAddressTypeName = oPrimaryAddressDTO.TypeCode.Name;
-                    oUserDataModel.PrimaryAddressTypeCode = oPrimaryAddressDTO.TypeCode.Code;
-                    oUserDataModel.PrimaryAddressTypeDescription = oPrimaryAddressDTO.TypeCode.Description;
-                    oUserDataModel.PrimaryAddressTypeClassTypeID = oPrimaryAddressDTO.TypeCode.ClassTypeID;
+                    model.UserAddressAddressTypeID = addressDTO.AddressTypeID;
+                    model.UserAddressCity = addressDTO.City;
+                    model.UserAddressCountryID = addressDTO.CountryID;
+                    model.UserAddressID = addressDTO.AddressID;
+                    model.UserAddressLine1 = addressDTO.Line1;
+                    model.UserAddressLine2 = addressDTO.Line2;
+                    model.UserAddressLine3 = addressDTO.Line3;
+                    model.UserAddressState = addressDTO.State;
+                    model.UserAddressTitle = addressDTO.Title;
+                    model.UserAddressZipCode = addressDTO.ZipCode;
 
                 }
 
-                if (oPrimaryPhoneDTO != null)
+                if (phoneDTO != null)
                 {
-                    oUserDataModel.PrimaryPhone_PhoneID = oPrimaryPhoneDTO.PhoneID;
-                    oUserDataModel.PrimaryPhoneNumber = oPrimaryPhoneDTO.Number;
-                    oUserDataModel.PrimaryPhoneExt = oPrimaryPhoneDTO.Ext;
-
-                    oUserDataModel.PrimaryPhoneTypeID = oPrimaryPhoneDTO.TypeCode.TypeCodeID;
-                    oUserDataModel.PrimaryPhoneTypeName = oPrimaryPhoneDTO.TypeCode.Name;
-                    oUserDataModel.PrimaryPhoneTypeCode = oPrimaryPhoneDTO.TypeCode.Code;
-                    oUserDataModel.PrimaryPhoneTypeDescription = oPrimaryPhoneDTO.TypeCode.Description;
-                    oUserDataModel.PrimaryPhoneTypeClassTypeID = oPrimaryPhoneDTO.TypeCode.ClassTypeID;
-
+                    model.UserPhoneCountryID = phoneDTO.CountryID;
+                    model.UserPhoneExt = phoneDTO.Ext;
+                    model.UserPhoneID = phoneDTO.PhoneID;
+                    model.UserPhoneNumber = phoneDTO.Number;
+                    model.UserPhoneTypeID = phoneDTO.PhoneTypeID;
                 }
 
-                if (oPrimaryEmailDTO != null)
+                if (emailDTO != null)
                 {
-                    oUserDataModel.PrimaryEmail_EmailID = oPrimaryEmailDTO.EmailID;
-                    oUserDataModel.PrimaryEmailAddress = oPrimaryEmailDTO.Address;
-
-                    oUserDataModel.PrimaryEmailTypeID = oPrimaryPhoneDTO.TypeCode.TypeCodeID;
-                    oUserDataModel.PrimaryEmailTypeName = oPrimaryEmailDTO.TypeCode.Name;
-                    oUserDataModel.PrimaryEmailTypeCode = oPrimaryEmailDTO.TypeCode.Code;
-                    oUserDataModel.PrimaryEmailTypeDescription = oPrimaryEmailDTO.TypeCode.Description;
-                    oUserDataModel.PrimaryEmailTypeClassTypeID = oPrimaryEmailDTO.TypeCode.ClassTypeID;
-
+                    model.UserEmailAddress = emailDTO.Address;
+                    model.UserEmailID = emailDTO.EmailID;
+                    model.UserEmailTypeID = emailDTO.EmailTypeID;
                 }
             }
 
-            return oUserDataModel;
+            return model;
         }
 
         public static UserDTO ToUserDTO(UserDataModel datamodel)
@@ -115,16 +95,16 @@ namespace JobsInABA.Workflows.Models.Assemblers
             AddressDTO dto = new AddressDTO();
             if (datamodel != null)
             {
-                dto.AddressID = datamodel.PrimaryUserAddressID;
-                dto.AddressTypeID = datamodel.PrimaryAddressTypeID;
-                dto.City = datamodel.PrimaryAddressCity;
-                dto.CountryID = datamodel.PrimaryAddressCountryID;
-                dto.Line1 = datamodel.PrimaryAddressLine1;
-                dto.Line2 = datamodel.PrimaryAddressLine2;
-                dto.Line3 = datamodel.PrimaryAddressLine3;
-                dto.State = datamodel.PrimaryAddressState;
-                dto.Title = datamodel.PrimaryAddressTitle;
-                dto.ZipCode = datamodel.PrimaryAddressZipCode;
+                dto.AddressID = datamodel.UserAddressID;
+                dto.AddressTypeID = datamodel.UserAddressAddressTypeID;
+                dto.City = datamodel.UserAddressCity;
+                dto.CountryID = datamodel.UserAddressCountryID;
+                dto.Line1 = datamodel.UserAddressLine1;
+                dto.Line2 = datamodel.UserAddressLine2;
+                dto.Line3 = datamodel.UserAddressLine3;
+                dto.State = datamodel.UserAddressState;
+                dto.Title = datamodel.UserAddressTitle;
+                dto.ZipCode = datamodel.UserAddressZipCode;
             }
 
             return dto;
@@ -135,11 +115,11 @@ namespace JobsInABA.Workflows.Models.Assemblers
             PhoneDTO dto = new PhoneDTO();
             if (datamodel != null)
             {
-                dto.CountryID = datamodel.PrimaryAddressCountryID;
-                dto.Ext = datamodel.PrimaryPhoneExt;
-                dto.Number = datamodel.PrimaryPhoneNumber;
-                dto.PhoneID = datamodel.PrimaryPhone_PhoneID;
-                dto.PhoneTypeID = datamodel.PrimaryPhoneTypeID;
+                dto.CountryID = datamodel.UserPhoneCountryID;
+                dto.Ext = datamodel.UserPhoneExt;
+                dto.Number = datamodel.UserPhoneNumber;
+                dto.PhoneID = datamodel.UserPhoneID;
+                dto.PhoneTypeID = datamodel.UserPhoneTypeID;
             }
 
             return dto;
@@ -150,9 +130,9 @@ namespace JobsInABA.Workflows.Models.Assemblers
             EmailDTO dto = new EmailDTO();
             if (datamodel != null)
             {
-                dto.Address = datamodel.PrimaryEmailAddress;
-                dto.EmailID = datamodel.PrimaryEmail_EmailID;
-                dto.EmailTypeID = datamodel.PrimaryEmailTypeID;
+                dto.Address = datamodel.UserEmailAddress;
+                dto.EmailID = datamodel.UserEmailID;
+                dto.EmailTypeID = datamodel.UserEmailTypeID;
             }
 
             return dto;

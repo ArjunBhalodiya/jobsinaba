@@ -21,54 +21,35 @@ namespace JobsInABA.Workflows
 
         public JobDataModel GetJob(int id)
         {
-
-            JobDataModel oJobDataModel = null;
+            JobDataModel model = new JobDataModel();
             if (id > 0)
             {
                 JobDTO oJobDTO = oJobsBL.Get(id);
 
                 if (oJobDTO != null)
                 {
-                    oJobDataModel = GetJob(oJobDTO);
+                    model = GetJob(oJobDTO);
                 }
             }
 
-            return oJobDataModel;
+            return model;
         }
 
         public JobDataModel GetJob(JobDTO oJobDTO)
         {
-
             JobDataModel oJobDataModel = null;
             if (oJobDTO != null)
             {
-
-                JobAddressDTO oJobAddressDTO = (oJobDTO.JobAddresses != null) ? oJobDTO.JobAddresses.Where(o => o.IsPrimary).FirstOrDefault() : null;
-                AddressDTO oPrimaryAddressDTO = (oJobAddressDTO != null) ? oJobAddressDTO.Address : null; //oAddressBL.Get(oJobAddressDTO.AddressID) : null;
-
-                JobPhoneDTO oJobPhoneDTO = (oJobDTO.JobPhones != null) ? oJobDTO.JobPhones.Where(o => o.IsPrimary).FirstOrDefault() : null;
-                PhoneDTO oPrimaryPhoneDTO = (oJobPhoneDTO != null) ? oJobPhoneDTO.Phone : null; //oPhonesBL.Get(oJobPhoneDTO.PhoneID) : null;
-
-                JobEmailDTO oJobEmailDTO = (oJobDTO.JobEmails != null) ? oJobDTO.JobEmails.Where(o => o.IsPrimary).FirstOrDefault() : null;
-                EmailDTO oPrimaryEmailDTO = (oJobEmailDTO != null) ? oJobEmailDTO.Email : null; //oEmailsBL.Get(oJobEmailDTO.EmailID) : null;
-
-                oJobDataModel = JobDataModelAssembler.ToDataModel(oJobDTO, oPrimaryAddressDTO, oPrimaryPhoneDTO, oPrimaryEmailDTO);
-                oJobDataModel.PrimaryJobAddressID = (oJobAddressDTO != null) ? oJobAddressDTO.JobAddressID : 0;
-                oJobDataModel.PrimaryJobPhoneID = (oJobPhoneDTO != null) ? oJobPhoneDTO.JobPhoneID : 0;
-                oJobDataModel.PrimaryJobEmailID = (oJobEmailDTO != null) ? oJobEmailDTO.JobEmailID : 0;
-
-                //Get All the Addresses.
-                oJobDataModel.Addresses = (oJobDTO.JobAddresses != null) ? oAddressWorkflows.GetAddresses(oJobDTO.JobAddresses.Select(ua => ua.Address).ToList()) : null;
+                oJobDataModel = JobDataModelAssembler.ToDataModel(oJobsBL.Get(oJobDTO.JobID), null, null);
             }
             return oJobDataModel;
         }
 
         public List<JobDataModel> GetJobs()
         {
-
             List<JobDataModel> oJobDataModels = new List<JobDataModel>();
 
-            List<JobDTO> oJobDTOs = oJobsBL.GetJobs();
+            List<JobDTO> oJobDTOs = oJobsBL.Get().ToList();
 
             oJobDataModels = oJobDTOs.Select(Jobdto => GetJob(Jobdto)).ToList();
 
@@ -77,45 +58,26 @@ namespace JobsInABA.Workflows
 
         public JobDataModel CreateJob(JobDataModel oJobDataModel)
         {
-
             if (oJobDataModel != null)
             {
                 JobDTO oJobDTO = new JobDTO();
-                PhoneDTO oPhoneDTO = new PhoneDTO();
-                EmailDTO oEmailDTO = new EmailDTO();
-                AddressDTO oAddressDTO = new AddressDTO();
 
                 oJobDTO = JobDataModelAssembler.ToJobDTO(oJobDataModel);
-                oPhoneDTO = JobDataModelAssembler.ToPhoneDTO(oJobDataModel);
-                oEmailDTO = JobDataModelAssembler.ToEmailDTO(oJobDataModel);
-                oAddressDTO = JobDataModelAssembler.ToAddressDTO(oJobDataModel);
 
                 if (oJobDTO != null)
                 {
                     oJobDTO = oJobsBL.Create(oJobDTO);
-                }
-                if (oPhoneDTO != null)
-                {
-                    oPhoneDTO = oPhonesBL.Create(oPhoneDTO);
-                }
-                if (oEmailDTO != null)
-                {
-                    oEmailsBL.Create(oEmailDTO);
-                }
-                if (oAddressDTO != null)
-                {
-                    oAddressBL.Create(oAddressDTO);
                 }
             }
 
             return oJobDataModel;
         }
 
-        private JobsBL oJobsBL
+        private JobBL oJobsBL
         {
             get
             {
-                if (_JobsBL == null) _JobsBL = new JobsBL();
+                if (_JobsBL == null) _JobsBL = new JobBL();
                 return _JobsBL;
             }
         }

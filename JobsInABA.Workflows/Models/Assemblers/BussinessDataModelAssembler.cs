@@ -16,76 +16,51 @@ namespace JobsInABA.Workflows.Models.Assemblers
 
             if (model != null)
             {
-                model = new BussinessDataModel
-                {
-                    Abbreviation = bussinessDTO.Abbreviation,
-                    BusinessID = bussinessDTO.BusinessID,
-                    BusinessTypeID = bussinessDTO.BusinessTypeID,
-                    insdt = bussinessDTO.insdt,
-                    insuser = bussinessDTO.insuser,
-                    IsActive = bussinessDTO.IsActive,
-                    IsDeleted = bussinessDTO.IsDeleted,
-                    Name = bussinessDTO.Name,
-                    StartDate = bussinessDTO.StartDate,
-                    upddt = bussinessDTO.upddt,
-                    upduser = bussinessDTO.upduser
-                };
-
-                if (primaryAddressDTO != null)
-                {
-                    model.BusinessPrimaryAddressID = primaryAddressDTO.AddressID;
-                    model.BussinessAddressTypeID = primaryAddressDTO.AddressTypeID;
-                    model.BussinessAddressCity = primaryAddressDTO.City;
-                    model.BussinessCountryAbbreviation = primaryAddressDTO.Country.Abbreviation;
-                    model.BussinessCountryCode = primaryAddressDTO.Country.Code;
-                    model.BussinessCountryName = primaryAddressDTO.Country.Name;
-                    model.BussinessCountryPhoneCode = primaryAddressDTO.Country.PhoneCode;
-                    model.BussinessAddressCountryID = primaryAddressDTO.CountryID;
-
-                    model.BussinessAddressLine1 = primaryAddressDTO.Line1;
-                    model.BussinessAddressLine2 = primaryAddressDTO.Line2;
-                    model.BussinessAddressLine3 = primaryAddressDTO.Line3;
-                    model.BussinessAddressTitle = primaryAddressDTO.Title;
-                    model.BussinessAddressState = primaryAddressDTO.State;
-                    model.BussinessAddressTypeName = primaryAddressDTO.TypeCode.Name;
-                    model.BussinessAddressTypeCode = primaryAddressDTO.TypeCode.Code;
-                    model.BussinessAddressTypeDescription = primaryAddressDTO.TypeCode.Description;
-                    model.BussinessAddressTypeClassTypeID = primaryAddressDTO.TypeCode.ClassTypeID;
-                    model.BussinessAddressTypeParentTypeCodeID = primaryAddressDTO.TypeCode.TypeCodeID;
-
-                    model.BussinessAddressCity = primaryAddressDTO.City;
-                    model.BussinessAddressState = primaryAddressDTO.State;
-                    model.BussinessAddressZipCode = primaryAddressDTO.ZipCode;
-                    model.BussinessAddressCountryID = primaryAddressDTO.CountryID;
-                }
-
-                if (primaryPhoneDTO != null)
-                {
-                    model.BusinessPhoneID = primaryPhoneDTO.PhoneID;
-                    model.BussinessPhoneCountryID = primaryPhoneDTO.CountryID;
-                    model.BussinessPhoneNumber = primaryPhoneDTO.Number;
-                    model.BussinessPhoneNumberExt = primaryPhoneDTO.Ext;
-                    model.BussinessPhoneTypeID = primaryPhoneDTO.PhoneTypeID;
-
-                    model.BussinessPhoneTypeName = primaryPhoneDTO.TypeCode.Name;
-                    model.BussinessPhoneTypeCode = primaryPhoneDTO.TypeCode.Code;
-                    model.BussinessPhoneTypeDescription = primaryPhoneDTO.TypeCode.Description;
-                    model.BussinessPhoneTypeClassTypeID = primaryPhoneDTO.TypeCode.ClassTypeID;
-                    model.BussinessPhoneTypeParentTypeCodeID = primaryPhoneDTO.TypeCode.ClassTypeID;
-                }
-
-                if (primaryEmailDTO != null)
-                {
-                    model.BusinessPrimaryEmailID = primaryEmailDTO.EmailID;
-                    model.BussinessEmailAddress = primaryEmailDTO.Address;
-                    model.BussinessEmailTypeID = primaryEmailDTO.EmailTypeID;
-                    model.BussinessEmailTypeName = primaryEmailDTO.TypeCode.Name;
-                    model.BussinessEmailTypeCode = primaryEmailDTO.TypeCode.Code;
-                    model.BussinessEmailTypeDescription = primaryEmailDTO.TypeCode.Description;
-                    model.BussinessEmailTypeClassTypeID = primaryEmailDTO.TypeCode.ClassTypeID;
-                    model.BussinessEmailTypeParentTypeCodeID = primaryEmailDTO.TypeCode.ParentTypeCodeID;
-                }
+                model = new BussinessDataModel();
+                model.Abbreviation = bussinessDTO.Abbreviation;
+                model.BusinessID = bussinessDTO.BusinessID;
+                model.BusinessTypeID = bussinessDTO.BusinessTypeID;
+                model.insdt = bussinessDTO.insdt;
+                model.insuser = bussinessDTO.insuser;
+                model.IsActive = bussinessDTO.IsActive;
+                model.IsDeleted = bussinessDTO.IsDeleted;
+                model.Name = bussinessDTO.Name;
+                model.StartDate = bussinessDTO.StartDate;
+                model.upddt = bussinessDTO.upddt;
+                model.upduser = bussinessDTO.upduser;
             }
+
+            if (primaryAddressDTO != null)
+            {
+                model.BusinessAddressAddressTypeID = primaryAddressDTO.AddressTypeID;
+                model.BusinessAddressCity = primaryAddressDTO.City;
+                model.BusinessAddressCountryID = primaryAddressDTO.CountryID;
+                model.BusinessAddressID = primaryAddressDTO.AddressID;
+                model.BusinessAddressLine1 = primaryAddressDTO.Line1;
+                model.BusinessAddressLine2 = primaryAddressDTO.Line2;
+                model.BusinessAddressLine3 = primaryAddressDTO.Line3;
+                model.BusinessAddressState = primaryAddressDTO.State;
+
+                model.BusinessAddressTitle = primaryAddressDTO.Title;
+                model.BusinessAddressZipCode = primaryAddressDTO.ZipCode;
+            }
+
+            if (primaryPhoneDTO != null)
+            {
+                model.BusinessPhoneCountryID = primaryPhoneDTO.CountryID;
+                model.BusinessPhoneExt = primaryPhoneDTO.Ext;
+                model.BusinessPhoneID = primaryPhoneDTO.PhoneID;
+                model.BusinessPhoneNumber = primaryPhoneDTO.Number;
+                model.BusinessPhoneTypeID = primaryPhoneDTO.PhoneTypeID;
+            }
+
+            if (primaryEmailDTO != null)
+            {
+                model.BusinessEmailAddress = primaryEmailDTO.Address;
+                model.BusinessEmailID = primaryEmailDTO.EmailID;
+                model.BusinessEmailTypeID = primaryEmailDTO.EmailTypeID;
+            }
+
 
             return model;
         }
@@ -118,31 +93,17 @@ namespace JobsInABA.Workflows.Models.Assemblers
             AddressDTO dto = new AddressDTO();
             if (model != null)
             {
-                dto.AddressID = model.BusinessPrimaryAddressID;
-                dto.AddressTypeID = model.BussinessAddressTypeID;
-                dto.City = model.BussinessAddressCity;
+                dto.AddressTypeID = model.BusinessAddressAddressTypeID;
+                dto.City = model.BusinessAddressCity;
+                dto.CountryID = model.BusinessAddressCountryID;
+                dto.AddressID = model.BusinessAddressID;
+                dto.Line1 = model.BusinessAddressLine1;
+                dto.Line2 = model.BusinessAddressLine2;
+                dto.Line3 = model.BusinessAddressLine3;
+                dto.State = model.BusinessAddressState;
 
-                dto.Country.Abbreviation = model.BussinessCountryAbbreviation;
-                dto.Country.Code = model.BussinessCountryCode;
-                dto.Country.Name = model.BussinessCountryName;
-                dto.Country.PhoneCode = model.BussinessCountryPhoneCode;
-                dto.CountryID = model.BussinessAddressCountryID;
-
-                dto.Line1 = model.BussinessAddressLine1;
-                dto.Line2 = model.BussinessAddressLine2;
-                dto.Line3 = model.BussinessAddressLine3;
-                dto.Title = model.BussinessAddressTitle;
-                dto.State = model.BussinessAddressState;
-                dto.TypeCode.Name = model.BussinessAddressTypeName;
-                dto.TypeCode.Code = model.BussinessAddressTypeCode;
-                dto.TypeCode.Description = model.BussinessAddressTypeDescription;
-                dto.TypeCode.ClassTypeID = model.BussinessAddressTypeClassTypeID;
-                dto.TypeCode.ParentTypeCodeID = model.BussinessAddressTypeParentTypeCodeID;
-
-                dto.City = model.BussinessAddressCity;
-                dto.State = model.BussinessAddressState;
-                dto.ZipCode = model.BussinessAddressZipCode;
-                dto.CountryID = model.BussinessAddressCountryID;
+                dto.Title = model.BusinessAddressTitle;
+                dto.ZipCode = model.BusinessAddressZipCode;
             }
 
             return dto;
@@ -154,16 +115,11 @@ namespace JobsInABA.Workflows.Models.Assemblers
             PhoneDTO dto = new PhoneDTO();
             if (model != null)
             {
-                dto.CountryID = model.BussinessPhoneCountryID;
-                dto.Number = model.BussinessPhoneNumber;
-                dto.Ext = model.BussinessPhoneNumberExt;
-                dto.PhoneTypeID = model.BussinessPhoneTypeID;
-
-                dto.TypeCode.Name = model.BussinessPhoneTypeName;
-                dto.TypeCode.Code = model.BussinessPhoneTypeCode;
-                dto.TypeCode.Description = model.BussinessPhoneTypeDescription;
-                dto.TypeCode.ClassTypeID = model.BussinessPhoneTypeClassTypeID;
-                dto.TypeCode.ParentTypeCodeID = model.BussinessPhoneTypeParentTypeCodeID;
+                dto.CountryID = model.BusinessPhoneCountryID;
+                dto.Ext = model.BusinessPhoneExt;
+                dto.PhoneID = model.BusinessPhoneID;
+                dto.Number = model.BusinessPhoneNumber;
+                dto.PhoneTypeID = model.BusinessPhoneTypeID;
             }
 
             return dto;
@@ -174,13 +130,9 @@ namespace JobsInABA.Workflows.Models.Assemblers
             EmailDTO dto = new EmailDTO();
             if (model != null)
             {
-                dto.Address = model.BussinessEmailAddress;
-                dto.EmailTypeID = model.BussinessEmailTypeID;
-                dto.TypeCode.Name = model.BussinessEmailTypeName;
-                dto.TypeCode.Code = model.BussinessEmailTypeCode;
-                dto.TypeCode.Description = model.BussinessEmailTypeDescription;
-                dto.TypeCode.ClassTypeID = model.BussinessEmailTypeClassTypeID;
-                dto.TypeCode.ParentTypeCodeID = model.BussinessEmailTypeParentTypeCodeID;
+                dto.Address = model.BusinessEmailAddress;
+                dto.EmailID = model.BusinessEmailID;
+                dto.EmailTypeID = model.BusinessEmailTypeID;
             }
 
             return dto;

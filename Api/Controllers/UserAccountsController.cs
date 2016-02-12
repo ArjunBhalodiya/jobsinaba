@@ -52,7 +52,7 @@ namespace Api.Controllers
 
             try
             {
-                db.UpdateUserAccount(id, userAccount);
+                db.UpdateUserAccount(userAccount);
             }
             catch (DbUpdateConcurrencyException)
             {

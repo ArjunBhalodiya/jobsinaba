@@ -24,6 +24,12 @@ namespace JobsInABA.BL
             }
         }
 
+        public List<AddressDTO> Get()
+        {
+            IEnumerable<Address> oAddress = oAddressRepo.GetAddress();
+            return AddressAssembler.ToDTOs(oAddress);
+        }
+
         public AddressDTO Get(int AddressID)
         {
             AddressDTO oAddressDTO = null;

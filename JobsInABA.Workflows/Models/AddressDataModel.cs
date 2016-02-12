@@ -9,61 +9,26 @@ namespace JobsInABA.Workflows.Models
 {
     public class AddressDataModel
     {
-        [DataMember()]
-        public Int32 AddressID { get; set; }
+        public int AddressID { get; set; }
+        public string Title { get; set; }
+        public string Line1 { get; set; }
+        public string Line2 { get; set; }
+        public string Line3 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string ZipCode { get; set; }
+        public Nullable<int> CountryID { get; set; }
+        public Nullable<int> AddressTypeID { get; set; }
 
-        [DataMember()]
-        public String Title { get; set; }
+        public string AddressCountryName { get; set; }
+        public string AddressCountryAbbreviation { get; set; }
+        public string AddressCountryCode { get; set; }
+        public string AddressCountryPhoneCode { get; set; }
 
-        [DataMember()]
-        public String Line1 { get; set; }
-
-        [DataMember()]
-        public String Line2 { get; set; }
-
-        [DataMember()]
-        public String Line3 { get; set; }
-
-        [DataMember()]
-        public String City { get; set; }
-
-        [DataMember()]
-        public String State { get; set; }
-
-        [DataMember()]
-        public String ZipCode { get; set; }
-
-        [DataMember()]
-        public Boolean AddressIsPrimary { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> AddressCountryID { get; set; }
-
-        [DataMember()]
-        public String AddressCountryName { get; set; }
-
-        [DataMember()]
-        public String AddressCountryAbbreviation { get; set; }
-
-        [DataMember()]
-        public String AddressCountryCode { get; set; }
-
-        [DataMember()]
-        public String AddressCountryPhoneCode { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> AddressTypeID { get; set; }
-
-        [DataMember()]
-        public String AddressTypeName { get; set; }
-
-        [DataMember()]
-        public String AddressTypeCode { get; set; }
-
-        [DataMember()]
-        public String AddressTypeDescription { get; set; }
-
-        [DataMember()]
-        public Int32 AddressTypeClassTypeID { get; set; }
+        public string AddressTypeCodeName { get; set; }
+        public string AddressTypeCode { get; set; }
+        public string AddressTypeCodeDescription { get; set; }
+        public int AddressTypeCodeClassTypeID { get; set; }
+        public Nullable<int> AddressTypeCodeParentTypeCodeID { get; set; }
     }
 }

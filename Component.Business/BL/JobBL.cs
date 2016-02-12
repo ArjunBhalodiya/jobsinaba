@@ -34,11 +34,18 @@ namespace JobsInABA.BL
             return oJobDTO;
         }
 
-        public Job Create(Job oJob)
+        public IEnumerable<JobDTO> Get()
+        {
+            IEnumerable<JobDTO> oJob = JobAssembler.ToDTOs(oJobRepos.GetJobs());
+
+            return oJob;
+        }
+
+        public JobDTO Create(JobDTO oJob)
         {
             if (oJob != null)
             {
-                return oJobRepos.CreateJob(oJob);
+                return JobAssembler.ToDTO(oJobRepos.CreateJob(JobAssembler.ToEntity(oJob)));
             }
 
             return null;
